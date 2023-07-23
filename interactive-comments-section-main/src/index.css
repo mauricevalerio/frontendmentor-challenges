@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;0,800;1,400;1,700;1,800&family=Rubik:wght@400;500;700&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Rubik', sans-serif;
+}
+
+body {
+    background-color: hsl(223, 19%, 93%)
+}
+
+img.profile-picture {
+    width: 48px;
+}
+
+textarea {
+    resize: none;
+    height: 150px;
+    width: 100%;
+}
+
+.current-user-tag {
+    font-size: 0.75rem;
+}
+
+div.replies {
+    position: relative;
+}
+
+div.replies::before {
+    content: "";
+    width: 0.5px;
+    height: 100%;
+    background-color: hsl(211, 10%, 45%);
+    position: absolute;
+    left: 0.6em;
+}
+
+.blue-text {
+    color: hsl(238, 40%, 52%);
+}
+
+.gray-text {
+    color: hsl(211, 10%, 45%);
+}
+
+.blue-bg {
+    background-color: hsl(238, 40%, 52%);
+}
+
+.text-sm {
+    font-size: 0.75rem;
+}
+
+@media (width > 768px) {
+    div.max-width {
+        max-width: 60%;
+    }
+}
