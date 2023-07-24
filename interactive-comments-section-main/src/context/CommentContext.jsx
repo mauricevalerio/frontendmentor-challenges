@@ -11,27 +11,19 @@ export default function CommentContextProvider({children}) {
 
     const [screenWidth, setScreenWidth] = useState(window.innerWidth)
 
-    const findOrigCommentScore = (id) => {
-      //pulled hard coded score from data.json as basis
-      let tempScore
-      
-      data.comments.forEach(comment => {
-        if (comment.id === id) {
-          tempScore = comment.score
-        } else {
-          comment.replies.forEach(reply => {
-            if (reply.id === id) {
-              tempScore = reply.score
-            }
-          })
-        }
-      })
-      return tempScore
-    }
-
     const decrementScore = (id) => {
-
-      //pulled hard coded score from data.json as basis
+      setCommentData(prevItems => ({
+        ...prevItems,
+        currentUser: {
+          ...prevItems.currentUser,
+          votedCommentIds: prevItems.currentUser.votedCommentIds ? 
+            prevItems.currentUser.votedCommentIds.find(commentId => commentId === id) ?
+            prevItems.currentUser.votedCommentIds.filter(commentId => commentId !== id)
+            : prevItems.currentUser.votedCommentIds
+            : []
+        },
+        
+      }))
 
       setCommentData(prevItems => ({
         ...prevItems,
@@ -39,7 +31,7 @@ export default function CommentContextProvider({children}) {
           prevItems.comments.map(comment => comment.id === id ? 
             { 
               ...comment, 
-              score: comment.score >= findOrigCommentScore(id) ? comment.score - 1 : comment.score
+              score: isCommentUpvoted(id) ? comment.score - 1 : comment.score
             } 
             : 
             comment)
@@ -49,15 +41,35 @@ export default function CommentContextProvider({children}) {
             replies: comment.replies.map(reply => reply.id === id ? 
               {
                 ...reply, 
-                score: reply.score >= findOrigCommentScore(id) ? reply.score - 1 : reply.score
+                score: isCommentUpvoted(id) ? reply.score - 1 : reply.score
               } 
               :
               reply)
         }))
       }))
+
+    }
+
+    const isCommentUpvoted = (id) => {
+      if (commentData.currentUser.hasOwnProperty("votedCommentIds") && commentData.currentUser.votedCommentIds.find(commentId => commentId === id)) {
+        return true
+      }
+      return false 
     }
     
     const incrementScore = (id) => {
+      setCommentData(prevItems => ({
+        ...prevItems,
+        currentUser: {
+          ...prevItems.currentUser,
+          votedCommentIds: prevItems.currentUser.votedCommentIds ? 
+            !prevItems.currentUser.votedCommentIds.find(commentId => commentId === id) ?
+            [...prevItems.currentUser.votedCommentIds, id] 
+            : prevItems.currentUser.votedCommentIds
+            : [id]
+        },
+        
+      }))
 
       setCommentData(prevItems => ({
         ...prevItems,
@@ -65,7 +77,7 @@ export default function CommentContextProvider({children}) {
           prevItems.comments.map(comment => comment.id === id ? 
             { 
               ...comment, 
-              score: comment.score <= findOrigCommentScore(id) ? comment.score + 1 : comment.score
+              score: !isCommentUpvoted(id) ? comment.score + 1 : comment.score
             } 
             : 
             comment)
@@ -75,12 +87,14 @@ export default function CommentContextProvider({children}) {
             replies: comment.replies.map(reply => reply.id === id ? 
               {
                 ...reply, 
-                score:  reply.score <= findOrigCommentScore(id) ? reply.score + 1 : reply.score
+                score: !isCommentUpvoted(id) ? reply.score + 1 : reply.score
               } 
               :
               reply)
         }))
       }))
+      
+
     }
 
     const handleDeleteComment = (id) => {

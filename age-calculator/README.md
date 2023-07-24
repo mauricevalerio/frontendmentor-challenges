@@ -33,7 +33,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Github](https://github.com/mauricevalerio/age-calculator)
+- Solution URL: [GitHub Repo](https://github.com/mauricevalerio/frontendmentor-challenges/tree/main/age-calculator)
 - Live Site URL: [How Young Are You](https://howyoungareyou.netlify.app/)
 
 ## My process
@@ -46,8 +46,6 @@ Users should be able to:
 - [React](https://reactjs.org/) - JS library
 
 ### What I learned
-
-A refresher to HTML, CSS, and React to test my skills as a Front End Developer.
 
 I learned to integrate a new package [React Hook Forms](https://www.react-hook-form.com/) to simplify form validation in React.
 
@@ -76,11 +74,6 @@ To see how you can add code snippets, see below:
     })}
     />
 ```
-
-### Continued development
-Need to focus more on Front End Development rather than taking on Full Stack Development without solidifying my knowledge on the Front End area.
-
-Need to refresh React concepts such as React Context API, Context hook, and Reducer hook.
 
 ### Useful resources
 
