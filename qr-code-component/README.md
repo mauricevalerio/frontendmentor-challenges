@@ -20,7 +20,7 @@ This is a solution to the [QR code component challenge on Frontend Mentor](https
 ### Links
 
 - Solution URL: [GitHub Repo](https://github.com/mauricevalerio/frontendmentor-challenges/tree/main/qr-code-component)
-- Live Site URL: [Frontendmentor Website QR Link](frontendmentor-qr-code-link.netlify.app)
+- Live Site URL: [Frontendmentor Website QR Link](frontendmentor-quick-response-code.netlify.app)
 
 ## My process
 
@@ -29,10 +29,9 @@ This is a solution to the [QR code component challenge on Frontend Mentor](https
 - Semantic HTML5 markup
 - CSS
 - Flexbox
-- CSS Grid
 - Mobile-first workflow
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
+- Website - [Maurice Valerio](https://mauricevalerio.dev/)
+- Frontend Mentor - [@mauricevalerio](https://www.frontendmentor.io/profile/mauricevalerio)
