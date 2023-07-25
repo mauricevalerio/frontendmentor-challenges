@@ -8,7 +8,7 @@ import IllustrationDesktop from "./assets/illustration-sign-up-desktop.svg"
 
 export default function App() {
 
-  const [hasSubmitted, setHasSubmitted] = useState<boolean>(true)
+  const [hasSubmitted, setHasSubmitted] = useState<boolean>(false)
   const [isError, setIsError] = useState<boolean>(false)
   const [email, setEmail] = useState<string>("")
   const [screenWidth, setScreenWidth] = useState<number>(window.innerWidth)
