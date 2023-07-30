@@ -10,6 +10,7 @@ export interface IpAddress {
         timezone: string,
         geonameId: number | string
     },
+    domains?: string[]
     as: {
         asn: number | string,
         name: string,

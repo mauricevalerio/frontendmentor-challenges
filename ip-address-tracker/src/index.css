@@ -7,8 +7,57 @@ body {
 
 header {
     background: no-repeat center/cover url("./assets/pattern-bg-mobile.png");
+    height: 35vh;
+    z-index: 9999;
 }
 
 .dark-gray-txt {
     color: hsl(0, 0%, 59%);
+}
+
+div.input-container {
+    display: flex;
+}
+
+input,
+button {
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+input {
+    flex: 1;
+    border-radius: 10px 0 0 10px;
+    font-size: 1.001rem;
+    padding: 1em;
+}
+
+button {
+    background-color: black;
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.5em;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+@media (width>=768px) {
+    div.item {
+        border-right: 1px solid lightgray;
+    }
+
+    div.item:last-child {
+        border-right: none;
+    }
+
+    input {
+        flex: unset;
+        font-size: 1rem;
+    }
+
+    div.input-container {
+        justify-content: center;
+    }
 }

@@ -13,3 +13,4 @@ export const fetchIpData = async (inputIp: string = ""): Promise<IpAddress> => {
         throw e
     }
 }
+

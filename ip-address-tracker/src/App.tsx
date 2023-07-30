@@ -1,70 +1,45 @@
 import { useState, useEffect } from 'react'
-// import { IpAddress } from './interfaces/IpAddress'
-// import { fetchIpData } from './utils/utils'
-import IconArrow from './assets/icon-arrow.svg'
+import { IpAddress } from './interfaces/IpAddress'
+import { fetchIpData } from './utils/utils'
+// import { ErrorResponse } from './interfaces/ErrorResponse'
+import Header from './components/Header'
+import Map from './components/Map'
+import Results from './components/Results'
 
-export default function App(): JSX.Element {
+const App: React.FC = () => {
   const [inputIp, setInputIp] = useState<string>('')
-  // const [ipData, setIpData] = useState<IpAddress>()
+  const [ipData, setIpData] = useState<IpAddress>(
+    { "ip": "8.8.8.8", "location": { "country": "US", "region": "California", "city": "Mountain View", "lat": 37.38605, "lng": -122.08385, "postalCode": "94035", "timezone": "-07:00", "geonameId": 5375480 }, "domains": ["21vek-15801.21vek-dev.by", "825391.com", "alarm-jetfamilyday.ru", "anapaulatoledo.com.br", "api.21vek-15801.21vek-dev.by"], "as": { "asn": 15169, "name": "GOOGLE", "route": "8.8.8.0\/24", "domain": "https:\/\/about.google\/intl\/en\/", "type": "Content" }, "isp": "Google LLC" })
+  // or ErrorResponse
 
-  // How to determine if an IP Address or Domain is passed?
+  const fetch = async (): Promise<void> => {
+    const data = await fetchIpData(inputIp)
+    setIpData(data)
+    setInputIp('')
+  }
 
-  // const fetch = async (): Promise<void> => {
-  //   const data = await fetchIpData(inputIp)
-  //   setIpData(data)
-  //   setInputIp("")
-  // }
+  // useEffect((): void => { fetch() }, [])
 
-  useEffect((): void => {
-    // fetch()
-  }, [])
-
-  // fetchIpData("google.com").then(data => console.log(data)).catch(e => console.log(e))
-  // fetchIpData("62.64.64.12").then(data => console.log(data)).catch(e => console.log(e))
-  // fetchIpData("asdasdasd").then(data => console.log(data)).catch(e => console.log(e)) //{code: 422, messages: 'Input correct domain.'}
-  // fetchIpData("192.212.174.101").then(data => console.log(data)).catch(e => console.log(e)) //{ip: '192.212.174.101', location: {…}, as: {…}, isp: 'Southern California Edison'}
   return (
     <>
       <header className='p-4 is-relative'>
-        <h1 className='has-text-centered has-text-white title is-3 is-spaced'>IP Address Tracker</h1>
-        <div className='field has-addons'>
-          <div className='control is-expanded'>
-            <input
-              className='input is-medium is-rounded'
-              type='text'
-              name='inputIp'
-              value={inputIp}
-              onChange={(e) => setInputIp(e.target.value)}
-              placeholder='Search for any IP address or domain' />
-          </div>
-          <div className='control'>
-            <button
-              // onClick={fetch}
-              className='button is-black is-medium is-rounded'>
-              <img src={IconArrow} alt='Greater than symbol button' />
-            </button>
-          </div>
-        </div>
-
-        <div className='p-4 is-rounded'>
-          <div className='box content has-text-weight-bold has-text-centered'>
-
-            <p className='is-size-7 is-uppercase dark-gray-txt'>IP Address</p>
-            {/* <p className='is-size-5'>{ipData?.ip}</p> */}
-
-            <p className='is-size-7 is-uppercase dark-gray-txt'>Location</p>
-            {/* <p className='is-size-5'>{ipData?.location.city}, {ipData?.location.region} {ipData?.location.postalCode}</p> */}
-
-            <p className='is-size-7 is-uppercase dark-gray-txt'>Timezone</p>
-            {/* <p className='is-size-5'>UTC {ipData?.location.timezone}</p> */}
-
-            <p className='is-size-7 is-uppercase dark-gray-txt'>ISP</p>
-            {/* <p className='is-size-5'>{ipData?.isp}</p> */}
-          </div>
-        </div>
+        <Header
+          inputIp={inputIp}
+          setInputIp={setInputIp}
+          fetch={fetch}
+        />
+        {ipData && <Results {...ipData} />}
       </header>
 
+      {ipData?.location.lat && ipData?.location.lng &&
+        <Map
+          lat={ipData.location.lat}
+          lng={ipData.location.lng}
+        />
+      }
 
     </>
   )
 }
+
+export default App
