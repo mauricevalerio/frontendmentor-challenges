@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+// useEffect
 import { IpAddress } from './interfaces/IpAddress'
 import { fetchIpData } from './utils/utils'
 // import { ErrorResponse } from './interfaces/ErrorResponse'
