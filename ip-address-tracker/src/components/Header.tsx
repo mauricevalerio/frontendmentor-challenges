@@ -4,7 +4,7 @@ import { HeaderProps } from '../interfaces/HeaderProps'
 const Header: React.FC<HeaderProps> = ({ inputIp, setInputIp, fetch }) => {
     return (
         <>
-            <h1 className='has-text-centered has-text-white mb-4 is-size-3-mobile is-size-6-tablet'>IP Address Tracker</h1>
+            <h1 className='has-text-centered has-text-white mb-4 is-size-3-mobile is-size-4-tablet'>IP Address Tracker</h1>
             <div className='mb-5 input-container'>
                 <input
                     type='text'
