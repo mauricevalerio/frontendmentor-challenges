@@ -54,3 +54,10 @@ button:hover {
         top: 30%;
     }
 }
+
+@media (width>=1280px) {
+
+    .results-relative {
+        top: 35%;
+    }
+}
