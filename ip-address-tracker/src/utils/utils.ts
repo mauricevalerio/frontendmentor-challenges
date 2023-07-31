@@ -7,6 +7,10 @@ export const fetchIpData = async (inputIp: string = ""): Promise<IpAddress> => {
     let queryString: string = inputIp.length > 0 ? isInputIp(inputIp) ? `ipAddress=${inputIp}` : `domain=${inputIp}` : ""
     try {
         const response = await fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=at_8avWcUYt9CBPpwwbYLrODrUhYjePL&${queryString}`)
+        if (!response.ok) {
+            let error = await response.json()
+            throw error
+        }
         const data = await response.json()
         return data
     } catch (e) {
