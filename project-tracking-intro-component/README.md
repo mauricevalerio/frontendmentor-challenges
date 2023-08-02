@@ -29,8 +29,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [GitHub Repo](https://github.com/mauricevalerio/frontendmentor-challenges)
+- Live Site URL: [Project Tracking Intro](https://project-tracker-intro.netlify.app/)
 
 ## My process
 
@@ -44,12 +44,32 @@ Users should be able to:
 
 ### What I learned
 
-Learned and practiced the basics of SASS such as: 
+Learned and practiced the basics of SASS such as: variables, nesting, partials, modules, mixins, extends/inheritance
 
 To see how you can add code snippets, see below:
 
-```html
-<h1>Some HTML code I'm proud of</h1>
+```variables
+$primary-red-color: hsl(0, 100%, 68%)
+```
+```mixins
+@mixin cta($background, $size, $padding, $border-radius, $font-weight)
+    color: #fff
+    display: inline-block
+    text-transform: uppercase
+    margin-right: 1rem
+    background: $background
+    font-size: $size
+    padding: $padding
+    border-radius: $border-radius
+    font-weight: $font-weight
+```
+```extends/inheritance
+%reset
+    box-sizing: border-box
+    margin: 0
+    padding: 0
+    text-decoration: none
+    list-style-type: none
 ```
 
 ## Author
