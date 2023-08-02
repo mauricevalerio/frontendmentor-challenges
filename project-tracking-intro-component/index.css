@@ -79,7 +79,7 @@ main img.illustration-devices {
 
 footer {
   font-size: 1rem;
-  padding: 0 1em;
+  padding: 0 1em 1em 1em;
 }
 footer p.project-cta {
   margin: 1rem 0;
@@ -130,7 +130,7 @@ footer p.project-btn-cta a:hover {
   opacity: 0.85;
 }
 footer p.project-btn-cta span {
-  letter-spacing: 0.175rem;
+  letter-spacing: 0.15rem;
   color: hsl(231, 7%, 65%);
   font-size: 0.9em;
   text-transform: uppercase;
