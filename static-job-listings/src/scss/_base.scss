@@ -1,0 +1,48 @@
+$font-size: 15px;
+$primary-desaturated-dark-cyan: hsl(180, 29%, 50%);
+$background-light-grayish-cyan: hsl(180, 52%, 96%);
+$filter-tablets-light-grayish-cyan: hsl(180, 31%, 95%);
+$dark-grayish-cyan: hsl(180, 8%, 52%);
+$very-dark-grayish-cyan: hsl(180, 14%, 20%);
+$mobile-breakpoint: 375px;
+$desktop-breakpoint: 1440px;
+
+%reset {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+%box-shadow {
+    border-radius: 5px;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    padding: 2rem 1rem;
+    width: 100%;
+    margin-bottom: 3rem;
+}
+
+%btn {
+    font-family: inherit;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+%btn-filter {
+    color: $primary-desaturated-dark-cyan;
+    background-color: $filter-tablets-light-grayish-cyan;
+    padding: .5rem;
+}
+
+@mixin text-style($font-color, $font-weight) {
+    color: $font-color;
+    font-weight: $font-weight;
+}
+
+@mixin tags ($background-color, $color) {
+    background-color: $background-color;
+    color: $color;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    margin-left: 0.75rem;
+}
