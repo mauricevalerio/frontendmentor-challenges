@@ -33,8 +33,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [GitHub Repo](https://github.com/mauricevalerio/frontendmentor-challenges/tree/main/rest-countries-api-with-color-theme-switcher)
+- Live Site URL: [REST Countries API with Color Switcher](https://a-whole-new-world.netlify.app/)
 
 ## My process
 
