@@ -16,6 +16,7 @@ const router = createBrowserRouter(createRoutesFromElements(
   <Route path='/' element={<Layout />}>
     <Route index element={<Home />} loader={HomeLoader} />
     <Route path=':name' element={<CountryDetails />} loader={({ params }) => CountryDetailsLoader(params.name!)} errorElement={<NotFound />} />
+    <Route path='*' element={<NotFound />} />
   </Route>
 ))
 
