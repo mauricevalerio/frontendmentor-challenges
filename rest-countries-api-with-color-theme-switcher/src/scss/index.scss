@@ -1,0 +1,211 @@
+@use 'base';
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300;6..12,600;6..12,800&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+html {
+    background-color: base.$dark-mode-background;
+}
+
+.html__light {
+    background-color: base.$light-mode-background;
+}
+
+//BODY
+body {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: base.$home-font-size;
+}
+
+.body__light {
+    background-color: base.$light-mode-background;
+}
+
+.body__dark {
+    background-color: base.$dark-mode-background;
+}
+
+.light__theme {
+    @include base.theme($color: base.$light-mode-text, $background-color: base.$light-mode-elements);
+}
+
+.dark__theme {
+    @include base.theme;
+}
+
+.light__theme--input {
+    @include base.theme($color: base.$light-mode-input, $background-color: base.$light-mode-elements);
+}
+
+.not__found--style {
+    background-color: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 2rem;
+    text-align: center;
+    gap: 1rem;
+
+    a {
+        padding: 0.5rem 1rem;
+        @extend %box-shadow;
+        border-radius: 10px;
+    }
+}
+
+//HEADER
+.header {
+    padding: 2rem 1rem;
+    font-weight: 800;
+    @extend %header-flex;
+    @extend %box-shadow;
+
+    .header__title {
+        font-weight: inherit;
+        font-size: inherit;
+    }
+
+    .header__theme--switcher--box {
+        @extend %header-flex;
+        column-gap: 0.5rem;
+        cursor: pointer;
+    }
+}
+
+//MAIN
+.main {
+    padding: 2rem;
+}
+
+.form__components--box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+}
+
+//FORMS INPUT
+.form__input--box {
+    @extend %box-shadow;
+    display: flex;
+    column-gap: 1rem;
+    padding: 1rem 1.5rem;
+    border-radius: 5px;
+    max-width: 480px;
+    flex: 1;
+
+    .form__input--search {
+        @extend %form-elements-style;
+        flex: 1;
+
+        &::placeholder {
+            color: inherit;
+        }
+    }
+}
+
+//FORMS DROPDOWN
+.form__dropdown--box {
+    @extend %box-shadow;
+    border-radius: 5px;
+
+    .form__dropdown--select {
+        border-radius: inherit;
+        @extend %form-elements-style;
+        padding: 1rem 2rem 1rem 1rem;
+    }
+}
+
+//ALL COUNTRIES
+.countries__box {
+    margin: 2rem 0;
+    display: grid;
+    justify-content: center;
+    gap: 3.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 350px));
+}
+
+.country__card {
+    @extend %box-shadow;
+    border-radius: 10px;
+    height: 100%;
+    transition: all 250ms ease-in-out;
+    @extend %country-common-styling;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+
+    .country__card--flag {
+        border-radius: 10px 10px 0 0;
+    }
+
+    .country__card--details {
+        @include base.country-card-details-padding($padding: 1rem 1.5rem 2.5rem, $margin-bottom: 0.25rem);
+    }
+}
+
+//COUNTRY DETAILS
+.country__card--details--box {
+    margin: 2rem 0;
+    background-color: inherit;
+    @extend %country-common-styling;
+
+    .country__card--details {
+        @include base.country-card-details-padding($padding: 1rem 0, $margin-bottom: 0.75rem);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2.5rem;
+
+        .country__card--name {
+            margin-bottom: 0;
+            width: 100%;
+        }
+
+        .border__country--box {
+            width: 100%;
+
+            .border__country--box--inner {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1rem;
+
+                .border__country--item {
+                    color: inherit;
+                    transition: all 250ms ease-in-out;
+
+                    &:hover {
+                        transform: scale(1.05);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.back__link,
+.border__country--item {
+    @extend %box-shadow;
+    padding: 0.5rem 2rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+@media (min-width: 1024px) {
+    .country__card--details--box {
+        display: flex;
+        gap: 7rem;
+
+        .country__card--flag {
+            max-width: 35%;
+        }
+    }
+}

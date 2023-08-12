@@ -1,0 +1,60 @@
+$home-font-size: 14px;
+$details-font-size: 16px;
+$dark-mode-text: hsl(0, 0%, 100%); //dark mode text
+$dark-mode-elements: hsl(209, 23%, 22%); //dark mode elements
+$dark-mode-background: hsl(207, 26%, 17%); //dark mode background
+
+$light-mode-text: hsl(200, 15%, 8%); //light mode text
+$light-mode-elements: hsl(0, 0%, 100%); //light mode elements
+$light-mode-background: hsl(0, 0%, 98%); //light mode background
+$light-mode-input: hsl(0, 0%, 52%); //light mode input
+
+%header-flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+%form-elements-style {
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    background-color: inherit;
+    border: none;
+    outline: none;
+}
+
+%box-shadow {
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+%country-common-styling {
+    .country__card--flag {
+        width: 100%;
+        display: block;
+    }
+
+    .country__card--details {
+
+        .country__card--name {
+            margin-bottom: 1rem;
+        }
+
+        .country__card--text--label {
+            font-weight: 600;
+        }
+    }
+}
+
+@mixin country-card-details-padding($padding, $margin-bottom) {
+    padding: $padding;
+
+    p {
+        margin-bottom: $margin-bottom;
+    }
+}
+
+
+@mixin theme($color: $dark-mode-text, $background-color: $dark-mode-elements) {
+    color: $color;
+    background-color: $background-color;
+}
