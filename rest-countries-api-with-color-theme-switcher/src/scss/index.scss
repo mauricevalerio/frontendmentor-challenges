@@ -199,6 +199,11 @@ body {
     cursor: pointer;
 }
 
+.back__link {
+    border: none;
+    font-family: inherit;
+}
+
 @media (min-width: 1024px) {
     .country__card--details--box {
         display: flex;

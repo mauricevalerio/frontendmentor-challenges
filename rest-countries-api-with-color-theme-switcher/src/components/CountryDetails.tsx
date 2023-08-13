@@ -1,6 +1,6 @@
 import { Country } from '../interfaces/ICountry'
 import { transformCountryData } from '../utils/fetch'
-import { useLoaderData, Link } from 'react-router-dom'
+import { useLoaderData, Link, useNavigate } from 'react-router-dom'
 import { ThemeContext } from '../context/Context'
 import { useContext } from 'react'
 import { motion } from 'framer-motion'
@@ -12,6 +12,7 @@ export const loader = async (countryName: string): Promise<Country> => {
 const CountryDetails: React.FC = () => {
     const data = useLoaderData() as Country
     const { theme } = useContext(ThemeContext)
+    const navigate = useNavigate()
 
     const nativeNameElements = Object.keys(data.name.nativeName).map((key, index, array) => <span key={key}>
         {' '}{data.name.nativeName[key].common}{array.length - 1 === index ? '' : ','}
@@ -30,7 +31,8 @@ const CountryDetails: React.FC = () => {
 
     return (
         <>
-            <Link to='..' relative='path' className={`back__link ${theme}__theme`}>&#8592; &nbsp; Back</Link>
+            {/* <Link to='..' relative='path' >&#8592; &nbsp; Back</Link> */}
+            <button className={`back__link ${theme}__theme`} onClick={() => navigate(-1)}>&#8592; &nbsp; Back</button>
 
             <motion.div
                 initial={{ opacity: 0 }}
