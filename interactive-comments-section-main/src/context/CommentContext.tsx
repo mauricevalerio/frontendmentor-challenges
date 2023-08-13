@@ -1,14 +1,18 @@
+import {currentUser, comments} from "../data/data.json"
 import data from "../data/data.json"
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, createContext } from "react"
 import { nanoid } from "nanoid"
 
-export const CommentContext = React.createContext()
+export const CommentContext = createContext()
 
 export default function CommentContextProvider({children}) {
 
     const [commentData, setCommentData] = useState(
       JSON.parse(localStorage.getItem("commentData")) || data)
 
+    console.log(currentUser)
+    console.log(comments)
+      
     const [screenWidth, setScreenWidth] = useState(window.innerWidth)
 
     const decrementScore = (id) => {
