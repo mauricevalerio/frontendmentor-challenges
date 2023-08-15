@@ -43,11 +43,10 @@ Users should be able to:
 - Semantic HTML5 markup
 - CSS
 - Flexbox
+- Grid
 - Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- React hooks useContext, useState, useEffect
-- React Child Props
-- [Bootstrap](https://getbootstrap.com/) - CSS Framework
+- [React](https://reactjs.org/)
+- [Bootstrap](https://getbootstrap.com/)
 - [JavaScript Time Ago](https://www.npmjs.com/package/javascript-time-ago) - NPM package to calculate how long the comment was created in seconds, minutes, hours, days, months, and years.
 
 ### What I learned
