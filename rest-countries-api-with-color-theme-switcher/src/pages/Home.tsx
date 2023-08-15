@@ -4,10 +4,11 @@ import CountryCard from '../components/CountryCard'
 import { transformAllCountriesData } from '../utils/fetch'
 import { filterChecker } from '../utils/filterChecker'
 import { useLoaderData, defer, Await } from 'react-router-dom'
-import { Suspense, useState } from 'react'
+import { Suspense, useContext, useState } from 'react'
 import { AllCountry } from '../interfaces/ICountry'
 import { UseLoaderDataType } from '../interfaces/IUseLoaderData'
 import { motion } from "framer-motion"
+import { ThemeContext } from '../context/Context'
 
 export const loader = async () => {
     const countries = await transformAllCountriesData()
@@ -16,6 +17,7 @@ export const loader = async () => {
 
 const Home: React.FC = () => {
     const data = useLoaderData() as UseLoaderDataType
+    const { theme } = useContext(ThemeContext)
 
     const [searchCountry, setSearchCountry] = useState<string>('')
     const [filterRegion, setFilterRegion] = useState<string>('')
@@ -59,7 +61,10 @@ const Home: React.FC = () => {
                         <Await resolve={data}>
                             {data => {
                                 return searchCountry.length > 0 || filterRegion.length > 0 ?
-                                    filteredElements.map((country: AllCountry, index: number) => <CountryCard key={index} {...country} />)
+                                    filteredElements.length === 0 ?
+                                        <h3 className={`country__not--found ${theme}__theme`}>No country found based on search filters.</h3>
+                                        :
+                                        filteredElements.map((country: AllCountry, index: number) => <CountryCard key={index} {...country} />)
                                     :
                                     data.countries.map((country: AllCountry, index: number) => <CountryCard key={index} {...country} />)
                             }}
