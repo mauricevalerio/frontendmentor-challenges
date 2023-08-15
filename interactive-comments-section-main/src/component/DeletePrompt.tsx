@@ -1,16 +1,17 @@
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
-import { useContext } from 'react'
-import { CommentContext } from '../context/CommentContext'
+import { globalContext } from '../context/CommentContext'
+import { DeletePromptProp } from '../types/TTemplateTypes'
 
-export default function DeletePrompt({id, ...props}) {
-  const { handleDeleteComment } = useContext(CommentContext)
-  
+const DeletePrompt: React.FC<DeletePromptProp> = ({ id, show, onHide }) => {
+  const { handleDeleteComment } = globalContext()
+
   return (
     <Modal
-    {...props}
-    aria-labelledby="contained-modal-title-vcenter"
-    centered
+      show={show}
+      onHide={onHide}
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
@@ -19,14 +20,16 @@ export default function DeletePrompt({id, ...props}) {
       </Modal.Header>
       <Modal.Body>
         <p className="gray-text">
-          Are you sure you want to delete this comment? 
+          Are you sure you want to delete this comment?
           This will remove the comment and can't be undone.
         </p>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={props.onHide} variant="secondary" className="text-uppercase">no, cancel</Button>
+        <Button onClick={onHide} variant="secondary" className="text-uppercase">no, cancel</Button>
         <Button onClick={() => handleDeleteComment(id)} variant="danger" className="text-uppercase">yes, delete</Button>
       </Modal.Footer>
     </Modal>
   )
 }
+
+export default DeletePrompt

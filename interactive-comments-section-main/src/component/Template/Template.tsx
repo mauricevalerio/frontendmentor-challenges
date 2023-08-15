@@ -1,122 +1,76 @@
-import { useState, useContext } from 'react'
-import { CommentContext } from '../../context/CommentContext'
+import { useState } from 'react'
 import TemplateHeader from './TemplateHeader'
 import TemplateContent from './TemplateContent'
 import TemplateActionButtons from './TemplateActionButtons'
 import TemplateScoreButtons from './TemplateScoreButtons'
-import AddCommentForm from '../CommentForm'
+import CommentForm from '../CommentForm'
+import { Comment } from '../../types/TComments'
+import EditForm from '../EditForm'
+import { globalContext } from '../../context/CommentContext'
 
-export default function Template({ data: { id, content, createdAt, score, user, replyingTo }, children }) {
-    const { commentData: { currentUser }, screenWidth } = useContext(CommentContext)
+const Template: React.FC<Comment> = ({ id, content, createdAt, score, user, replies, replyingTo }) => {
 
-    const [isReplyToggled, setIsReplyToggled] = useState(false)
-    const [isEditToggled, setIsEditToggled] = useState(false)
-    
-    const isCurrentUser = () => currentUser.username === user.username
-    
-    const templateHeader = <div className="d-flex align-items-center gap-3">
-        <TemplateHeader 
-        user={user}
-        createdAt={createdAt}
-        isCurrentUser={isCurrentUser}
-        />
-        {
-            screenWidth >= 768 ?
-            <div className="ms-auto">
-                <TemplateActionButtons 
-                id={id}
-                isCurrentUser={isCurrentUser}
-                setIsReplyToggled={setIsReplyToggled}
-                setIsEditToggled={setIsEditToggled}/>
-            </div>
-            : null
-        }
-    </div>
+    const { screenWidth } = globalContext()
+    const [toggleReply, setToggleReply] = useState(false)
+    const [toggleEdit, setToggleEdit] = useState(false)
+    const handleToggleEdit = () => { setToggleEdit(prevState => !prevState) }
+    const handleToggleReply = () => { setToggleReply(prevState => !prevState) }
 
     return (
-        <section>
-            {/* Indents if its a reply to a comment */}
-            {/* If edit is toggled then hide the current comment/reply */}
-            {!isEditToggled &&
-                
-                <div className={`bg-white ${replyingTo ? "ms-4 mb-2" : ""}`}>
-    
-                    <div className={`mb-2 p-2 ${screenWidth >= 768 ? "d-flex gap-2" : ""}`}>
-                        {screenWidth >= 768 ?
-                            <div>
-                                <TemplateScoreButtons id={id} score={score} />
-                            </div>
-                        : 
-                            null}
+        <>
+            <div className={`${screenWidth > 1024 ? 'grid-container' : ''}  bg-white mb-2 py-3 px-2 rounded`}>
 
-                        <div className='flex-grow-1'>
-                            {templateHeader}
-
-                            <TemplateContent content={content} replyingTo={replyingTo} />
-                        
-                            {screenWidth <= 768 ?
-                                <div className="d-flex justify-content-between align-items-center">
-                                    <TemplateScoreButtons id={id} score={score} />
-
-                                    <TemplateActionButtons 
-                                    id={id}
-                                    isCurrentUser={isCurrentUser}
-                                    setIsReplyToggled={setIsReplyToggled}
-                                    setIsEditToggled={setIsEditToggled}/>
-                                </div>
-                            : null}
-                        </div>
-                    </div> 
+                <div className={`header d-inline-flex align-items-center flex-wrap gap-3`}>
+                    <TemplateHeader user={user} createdAt={createdAt} />
                 </div>
-            }
 
-            {
-            // each comment/reply handles its own reply toggle
-            //indents when replyingTo is not undefined
-                isReplyToggled && 
-                <div className={`bg-white ${replyingTo ? "ms-4 mb-2" : ""}`}>
-                <AddCommentForm 
-                id={id}
-                replyingTo={user.username}
-                isReplyToggled={isReplyToggled}
-                setIsReplyToggled={setIsReplyToggled}
-                />
-                </div> 
-            }
+                <div className='content'>
+                    {toggleEdit ?
+                        <EditForm
+                            id={id}
+                            replyingTo={replyingTo || user.username}
+                            content={content}
+                            handleToggleEdit={handleToggleEdit}
+                        />
+                        :
+                        <TemplateContent content={content} replyingTo={replyingTo} />
+                    }
+                </div>
 
-            {
-                isEditToggled &&
-                <div className={`bg-white ${replyingTo ? "ms-4 mb-2" : ""}`}>
-                        <div className={`mb-2 p-2 ${screenWidth >= 768 ? "d-flex gap-2" : ""}`}>
-                        {screenWidth >= 768 ?
-                            <div>
-                                <TemplateScoreButtons id={id} score={score} />
-                            </div>
-                            : 
-                            null
-                        }
+                <div className='score d-inline-block'>
+                    <TemplateScoreButtons id={id} score={score} />
+                </div>
 
-                        <div className="flex-grow-1">
-                        {templateHeader}
-                        
-                        <AddCommentForm 
+                <div className='action d-inline-block ms-auto float-end'>
+                    <TemplateActionButtons
                         id={id}
-                        replyingTo={replyingTo}
-                        isEditToggled={isEditToggled}
-                        setIsEditToggled={setIsEditToggled}/>
-                        </div>
-                    </div>
-                </div> 
-            }
-
-            {children ?
-                <div className="replies">
-                    {children}
+                        username={user.username}
+                        handleToggleEdit={handleToggleEdit}
+                        handleToggleReply={handleToggleReply}
+                    />
                 </div>
-                :
-                null
-            }
-        
-        </section>
+
+            </div>
+
+            {toggleReply ?
+                <CommentForm
+                    id={id}
+                    username={user.username}
+                    toggleReply={toggleReply}
+                    handleToggleReply={handleToggleReply}
+                /> : null}
+
+            {!(typeof replies === 'undefined') &&
+                replies.length > 0 ?
+                <div className='replies'>
+                    {replies?.map(reply => <div key={reply.id} className='ms-4 mb-2'>
+                        <Template {...reply} />
+                    </div>)}
+                </div>
+                : null}
+
+        </>
     )
 }
+
+export default Template

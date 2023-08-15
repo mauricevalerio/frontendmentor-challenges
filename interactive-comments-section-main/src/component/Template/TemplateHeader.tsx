@@ -4,26 +4,31 @@ import en from 'javascript-time-ago/locale/en.json'
 TimeAgo.setDefaultLocale(en.locale)
 TimeAgo.addLocale(en)
 import ReactTimeAgo from 'react-time-ago'
+import { TemplateHeaderProp } from '../../types/TTemplateTypes'
+import { globalContext } from '../../context/CommentContext'
 
-export default function TemplateHeader({user, createdAt, isCurrentUser}) {
-    
+const TemplateHeader: React.FC<TemplateHeaderProp> = ({ user, createdAt }) => {
+    const { currentUserData } = globalContext()
+
     return (
         <>
-            <img 
-            src={user.image.png}
-            alt={`Profile picture of ${user.username}`} 
-            className="profile-picture"/>
+            <img
+                src={user.image.png}
+                alt={`Profile picture of ${user.username}`}
+                className="profile-picture" />
 
             <span className="fw-bold">{user.username}</span>
 
-            {isCurrentUser()
-            && 
-            <span className="text-white d-block px-1 blue-bg current-user-tag"
-            >You</span>}
+            {currentUserData.username === user.username &&
+                <span className="text-white d-block px-1 blue-bg current-user-tag"
+                >You</span>
+            }
 
             <span className="gray-text text-sm">
-                <ReactTimeAgo date={new Date(createdAt)} locale="en-US"/>
+                <ReactTimeAgo date={new Date(createdAt)} locale="en-US" />
             </span>
         </>
     )
 }
+
+export default TemplateHeader

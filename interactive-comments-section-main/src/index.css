@@ -10,7 +10,8 @@ body {
 }
 
 img.profile-picture {
-    width: 48px;
+    width: 45px;
+    height: 45px;
 }
 
 textarea {
@@ -31,7 +32,7 @@ div.replies::before {
     content: "";
     width: 0.5px;
     height: 100%;
-    background-color: hsl(211, 10%, 45%);
+    background-color: hsl(239, 57%, 85%);
     position: absolute;
     left: 0.6em;
 }
@@ -52,8 +53,34 @@ div.replies::before {
     font-size: 0.75rem;
 }
 
-@media (width > 768px) {
+@media (width > 1024px) {
     div.max-width {
         max-width: 60%;
     }
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 40px auto 40px;
+    grid-template-areas:
+        "s h h h h h h a a a a a"
+        "s c c c c c c c c c c c"
+        "s c c c c c c c c c c c"
+}
+
+.header {
+    grid-area: h;
+}
+
+.score {
+    grid-area: s;
+}
+
+.content {
+    grid-area: c;
+}
+
+.action {
+    grid-area: a;
 }

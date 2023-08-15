@@ -1,26 +1,14 @@
-import CommentForm from './component/CommentForm'
 import Template from './component/Template/Template'
-import { CommentContext } from './context/CommentContext'
-import { useContext } from 'react'
+import { globalContext } from './context/CommentContext'
+import CommentForm from './component/CommentForm'
 
-export default function App() {
-  const { commentData, setCommentData } = useContext(CommentContext)
+const App: React.FC = () => {
+  const { commentData } = globalContext()
 
-  const commentsElements = commentData.comments.map(comment =>
+  const commentsElements = commentData.map(comment =>
     <Template
       key={comment.id}
-      data={comment}
-      modifyItem={setCommentData}>
-      {
-        comment.replies.length > 0 ?
-          comment.replies.map(reply => (
-            <Template
-              key={reply.id}
-              data={reply}
-              modifyItem={setCommentData} />))
-          : null
-      }
-    </Template>
+      {...comment} />
   )
 
   return (
@@ -32,3 +20,5 @@ export default function App() {
     </div>
   )
 }
+
+export default App
