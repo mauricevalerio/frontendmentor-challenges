@@ -1,14 +1,20 @@
 import Header from './components/Header'
 import Main from './components/Main'
+import Results from './components/Results'
 import Rules from './components/Rules'
+import GameContextProvider from './context/GameContext'
 
-function App() {
+const App: React.FC = () => {
+
   return (
-    <div className='component__flex--container'>
-      <Header />
-      <Main />
-      <Rules />
-    </div>
+    <GameContextProvider>
+      <div className='component__flex--container mx-auto h-100 d-flex flex-column text-white'>
+        <Header />
+        <Main />
+        <Results />
+        <Rules />
+      </div>
+    </GameContextProvider>
   )
 }
 
