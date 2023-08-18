@@ -40,20 +40,20 @@ const Main: React.FC = () => {
     return (
         <>
             {!hasGameStarted ?
-                <div className='mx-auto text-center fs-5'>
-                    <span>Playing Up To:{' '}</span>
+                <div className='m-auto text-center fs-5 w-50'>
+                    <span className='fs-4'>Playing Up To:{' '}</span>
                     <select
                         name='gameSetScore'
                         id='gameSetScore'
                         value={gameSetScore}
                         onChange={handleGameSetterChange}
-                        className='p-2 rounded'
+                        className='p-1 rounded'
                     >
                         {
                             selections.map(num => <option key={num} value={num}>{num}</option>)
                         }
                     </select>
-                    <Button className='mt-4 d-block' onClick={handleGameStarted}>
+                    <Button className='mt-5 d-block p-2 w-50' onClick={handleGameStarted}>
                         Start
                     </Button>
                 </div >
