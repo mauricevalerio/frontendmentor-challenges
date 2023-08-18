@@ -3,6 +3,7 @@ Collection of my solutions to [frontendmentor challenges](https://www.frontendme
 
 | Challenge Name | Difficulty |
 | ----------- | ----------- |
+| [Rock, Paper, Scissors](https://r0ck-pap3r-scissors.netlify.app/) | Advanced |
 | [REST Countries API with Color Switcher](https://a-whole-new-world.netlify.app/) | Advanced |
 | [IP Address Tracker](https://trackingip.netlify.app/) | Intermediate |
 | [Static Job Listing](https://static-job-finder.netlify.app/) | Intermediate |
