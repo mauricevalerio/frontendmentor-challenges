@@ -32,7 +32,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [GitHub Repo](https://github.com/mauricevalerio/frontendmentor-challenges/tree/main/rock-paper-scissors)
-- Live Site URL: [Add live site URL here](https://r0ck-pap3r-scissors.netlify.app/)
+- Live Site URL: [Rock, Paper, Scissors](https://r0ck-pap3r-scissors.netlify.app/)
 
 ## My process
 
