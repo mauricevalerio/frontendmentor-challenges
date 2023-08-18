@@ -26,18 +26,18 @@ div#root {
 }
 
 .header {
-    .header__box {
-        border: 2.5px solid hsl(217, 16%, 45%);
+    .header__score--box {
+        min-width: 60px;
+    }
 
-        .header__score--label {
-            color: base.$score-text;
-            font-size: 0.7rem;
-        }
+    .header__score--label {
+        color: base.$score-text;
+        font-size: 0.7rem;
+    }
 
-        .header__score--data {
-            font-size: 1.5rem;
-            color: base.$dark-text;
-        }
+    .header__score--data {
+        font-size: 1.5rem;
+        color: base.$dark-text;
     }
 }
 

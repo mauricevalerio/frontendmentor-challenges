@@ -41,7 +41,7 @@ const Main: React.FC = () => {
         <>
             {!hasGameStarted ?
                 <div className='m-auto text-center fs-5 w-50'>
-                    <span className='fs-4'>Playing Up To:{' '}</span>
+                    <span className='fs-4'>Playing Up To{' '}</span>
                     <select
                         name='gameSetScore'
                         id='gameSetScore'
