@@ -10,3 +10,51 @@ $score-text: hsl(229, 64%, 46%);
 $header-outline: hsl(217, 16%, 45%);
 $start-background-color: hsl(214, 47%, 23%);
 $end-background-color: hsl(237, 49%, 15%);
+
+%animate-main {
+    @keyframes main__animation {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+}
+
+%animate-opponent-choice {
+    @keyframes opponent__choice--animation {
+        0% {
+            transform: scale(1.20);
+        }
+
+        50% {
+            transform: scale(1.1);
+            opacity: 0.3;
+        }
+
+        100% {
+            transform: scale(1.20);
+            opacity: 0.5;
+        }
+    }
+}
+
+%animate-text-results {
+    @keyframes text__results--animation {
+        0% {
+            transform: scale(1.20);
+        }
+
+        50% {
+            transform: scale(1.1);
+            opacity: 0.3;
+        }
+
+        100% {
+            transform: scale(1.20);
+            opacity: 0.5;
+        }
+    }
+}

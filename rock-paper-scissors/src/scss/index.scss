@@ -35,40 +35,15 @@ div#root {
         }
 
         .header__score--data {
-            font-size: 2rem;
+            font-size: 1.5rem;
             color: base.$dark-text;
         }
     }
 }
 
-@keyframes shrink-grow {
-    0% {
-        transform: scale(1.20);
-    }
-
-    50% {
-        transform: scale(1.1);
-        opacity: 0.3;
-    }
-
-    100% {
-        transform: scale(1.20);
-        opacity: 0.5;
-    }
-}
-
-@keyframes main__animation {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
 .main {
     max-width: 300px;
+    @extend %animate-main;
     animation: main__animation 1s;
 
     .main__triangle--icon {
@@ -128,12 +103,14 @@ div#root {
         min-width: 143px;
         padding: 1.35rem;
         border: 0.75rem solid transparent;
-        animation: shrink-grow 1s ease-out infinite;
+        @extend %animate-opponent-choice;
+        animation: opponent__choice--animation 1s ease-out infinite;
     }
 }
 
 .animation__results {
-    animation: shrink-grow 1s ease-out infinite;
+    @extend %animate-opponent-choice;
+    animation: text__results--animation 1s ease-out infinite;
 }
 
 select {
