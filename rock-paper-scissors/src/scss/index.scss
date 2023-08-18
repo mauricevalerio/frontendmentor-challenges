@@ -57,8 +57,19 @@ div#root {
     }
 }
 
+@keyframes main__animation {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
 .main {
     max-width: 300px;
+    animation: main__animation 1s;
 
     .main__triangle--icon {
         width: 100%;
@@ -149,7 +160,6 @@ div.col {
     }
 }
 
-
 .modal-header {
     color: base.$dark-text;
     border-bottom: none;
@@ -166,4 +176,5 @@ div.col {
 .modal-body {
     display: block;
     margin: 0 auto;
+    background-color: inherit;
 }

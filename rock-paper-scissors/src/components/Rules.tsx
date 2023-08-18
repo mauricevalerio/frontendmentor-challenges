@@ -6,9 +6,12 @@ import { globalContext } from '../context/GameContext'
 
 const Rules: React.FC = () => {
     const [show, setShow] = useState<boolean>(false)
+    const [showNewGameModal, setNewGameModal] = useState<boolean>(false)
 
     const handleShow = (): void => { setShow(true) }
     const { handleResetGame, hasGameStarted } = globalContext()
+
+    const handleShowNewGameModal = () => { setNewGameModal(true) }
 
     return (
         <>
@@ -17,7 +20,7 @@ const Rules: React.FC = () => {
                     Rules
                 </Button>
                 {hasGameStarted &&
-                    <Button onClick={handleResetGame}>
+                    <Button onClick={handleShowNewGameModal}>
                         New Game
                     </Button>}
             </div>
@@ -29,6 +32,21 @@ const Rules: React.FC = () => {
                 </Modal.Header>
                 <Modal.Body><img src={ImageRules} alt='Image Rules' /></Modal.Body>
                 <Modal.Header closeButton></Modal.Header>
+            </Modal>
+
+            <Modal centered show={showNewGameModal} onHide={() => setNewGameModal(false)}>
+                <Modal.Header closeButton>
+                </Modal.Header>
+                <Modal.Body>
+                    <p className='text-center'>Do you want to start a new game?</p>
+                    <div className='d-flex justify-content-between'>
+                        <Button onClick={() => {
+                            handleResetGame()
+                            setNewGameModal(false)
+                        }} variant='success'>Yes</Button>
+                        <Button onClick={() => setNewGameModal(false)} variant='secondary'>No</Button>
+                    </div>
+                </Modal.Body>
             </Modal>
         </>
     )
