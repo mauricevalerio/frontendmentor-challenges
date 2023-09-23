@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Animating the chevron on the dropdown list */
+.show .chevron {
+    transform: rotate(180deg);
+    transition: all 300ms;
+}
+
+.chevron {
+    transform: rotate(0deg);
+    transition: all 300ms;
+}
+
+/* backdrop for dropdown */
+.show .dropdown-backdrop {
+    opacity: 0.5;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+}
