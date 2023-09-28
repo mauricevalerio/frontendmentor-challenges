@@ -20,6 +20,8 @@ export default {
       'light': '#000112',
       'secondary-light': '#828FA3',
       'white': '#fff',
+      'dark-bg': '#2b2c37',
+      'very-dark-bg': '#20212c'
     },
     letterSpacing: {
       'widest': '0.5em',

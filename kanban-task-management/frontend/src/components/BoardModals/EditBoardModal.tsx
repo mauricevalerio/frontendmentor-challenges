@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from '@/app/hooks'
 import { TBoard } from '@/types/types'
 import { editBoard, selectCurrentBoard } from '@/features/board/dataSlice'
 import { nanoid } from 'nanoid'
+import { globalThemeContext } from '@/context/ThemeContext'
 
 type TEditBoardModalProps = {
     isEditBoardModalOpen: boolean,
@@ -12,6 +13,7 @@ type TEditBoardModalProps = {
 }
 
 const EditBoardModal: React.FC<TEditBoardModalProps> = ({ isEditBoardModalOpen, toggleEditBoardModal }) => {
+    const { themeValueBg, themeValueText, themeValueTextInput, themeValueBtnBg } = globalThemeContext()
     const currentBoard = useAppSelector(selectCurrentBoard)
     const [editedBoard, setEditedBoard] = useState<TBoard>(currentBoard)
     const dispatch = useAppDispatch()
@@ -67,7 +69,7 @@ const EditBoardModal: React.FC<TEditBoardModalProps> = ({ isEditBoardModalOpen, 
                 required
                 value={column.name}
                 onChange={e => handleEditBoardColumnListChange(e, column.id)}
-                className='p-3 flex-1 block outline-none border-secondary-light border-1 border-opacity-25 rounded mb-2' />
+                className={`${themeValueBg} ${themeValueTextInput} p-3 flex-1 block outline-none border-secondary-light border-1 border-opacity-25 rounded mb-2`} />
             <button
                 onClick={(e) => handleRemoveColumn(e, column.id)}
             ><IconCross /></button>
@@ -81,33 +83,33 @@ const EditBoardModal: React.FC<TEditBoardModalProps> = ({ isEditBoardModalOpen, 
             aria-labelledby="contained-modal-title-vcenter"
             centered
         >
-            <div className='p-4'>
+            <div className={`p-4 ${themeValueBg}`}>
                 <Modal.Header className='block p-0 border-0'>
                     <Modal.Title
                         id="contained-modal-title-vcenter"
-                        className='font-bold mb-4'>
+                        className={`${themeValueText} font-bold mb-4`}>
                         Edit Board
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body className='p-0'>
                     <form autoComplete='off' onSubmit={handleSubmitEditedBoard}>
-                        <label htmlFor='boardName' className='text-secondary-light font-bold'>Board Name</label>
+                        <label htmlFor='boardName' className={`font-bold ${themeValueText}`}>Board Name</label>
                         <input
                             required
                             type="text"
                             id='boardName'
                             value={editedBoard.name}
                             onChange={handleEditBoardNameChange}
-                            className='w-full p-3 block outline-none border-secondary-light border-1 border-opacity-25 rounded' />
+                            className={`${themeValueBg} ${themeValueTextInput} w-full p-3 block outline-none border-secondary-light border-1 border-opacity-25 rounded`} />
 
-                        <label className='text-secondary-light font-bold mt-4'>Board Columns</label>
+                        <label className={`${themeValueText} font-bold mt-4`}>Board Columns</label>
                         {columnInputElements}
                         <button
                             onClick={handleAddColumn}
-                            className='w-full bg-[rgba(99,95,199,0.10)] text-primary font-bold rounded-2xl p-4 mb-4'
+                            className={`${themeValueBtnBg} w-full text-primary font-bold rounded-3xl p-4 mb-4`}
                         >+ Add New Column</button>
                         <button
-                            className='w-full bg-primary text-white font-bold rounded-2xl p-4 mb-4'
+                            className='w-full bg-primary text-white font-bold rounded-3xl p-4 mb-4'
                         >Save Changes</button>
                     </form>
                 </Modal.Body>

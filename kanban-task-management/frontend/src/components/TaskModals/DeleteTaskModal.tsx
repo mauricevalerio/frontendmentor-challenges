@@ -2,6 +2,7 @@ import { Ttask } from '@/types/types'
 import Modal from 'react-bootstrap/Modal'
 import { useAppDispatch } from '@/app/hooks'
 import { deleteTask } from '@/features/board/dataSlice'
+import { globalThemeContext } from '@/context/ThemeContext'
 
 type TDeleteTaskModalProp = {
     isDeleteTaskModalOpen: boolean
@@ -11,7 +12,7 @@ type TDeleteTaskModalProp = {
 }
 
 const DeleteTaskModal: React.FC<TDeleteTaskModalProp> = ({ isDeleteTaskModalOpen, toggleDeleteTaskModal, columnId, taskData }) => {
-
+    const { themeValueBg } = globalThemeContext()
     const dispatch = useAppDispatch()
 
     const handleDeleteTask = () => {
@@ -25,7 +26,7 @@ const DeleteTaskModal: React.FC<TDeleteTaskModalProp> = ({ isDeleteTaskModalOpen
             aria-labelledby="contained-modal-title-vcenter"
             centered
         >
-            <div className='p-4'>
+            <div className={`p-4 ${themeValueBg}`}>
                 <Modal.Header className='block p-0 border-0'>
                     <Modal.Title
                         id="contained-modal-title-vcenter"

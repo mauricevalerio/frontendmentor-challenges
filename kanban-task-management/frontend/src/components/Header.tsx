@@ -8,10 +8,12 @@ import { globalEditModalContext } from '@/context/EditModalContext'
 import { useState } from 'react'
 import DeleteBoardModal from './BoardModals/DeleteBoardModal'
 import AddTaskModal from './TaskModals/AddTaskModal'
+import { globalThemeContext } from '@/context/ThemeContext'
 
 const Header: React.FC = () => {
     const currentBoard = useAppSelector(selectCurrentBoard)
     const { isEditBoardModalOpen, toggleEditBoardModal } = globalEditModalContext()
+    const { themeValueBg } = globalThemeContext()
 
     const [isDeleteBoardModalOpen, setIsDeleteBoardModalOpen] = useState<boolean>(false)
     const toggleDeleteBoardModal = (): void => { setIsDeleteBoardModalOpen(prevStatus => !prevStatus) }
@@ -21,7 +23,7 @@ const Header: React.FC = () => {
 
     return (
         <>
-            <header className='p-4 flex justify-between'>
+            <header className={`p-4 flex justify-between ${themeValueBg}`}>
                 <div className='flex gap-2 items-center'>
                     <IconLogoMobile />
                     <Dropdown />
@@ -38,7 +40,7 @@ const Header: React.FC = () => {
                             <IconVerticalEllipsis />
                         </BsDropdown.Toggle>
 
-                        <BsDropdown.Menu className='mt-4'>
+                        <BsDropdown.Menu className={`mt-4 ${themeValueBg}`}>
                             <BsDropdown.Item
                                 as='button'
                                 className='font-bold mb-2 text-secondary-light'

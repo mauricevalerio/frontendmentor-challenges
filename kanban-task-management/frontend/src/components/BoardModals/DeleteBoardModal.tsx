@@ -1,6 +1,7 @@
 import Modal from 'react-bootstrap/Modal'
 import { deleteBoard, selectCurrentBoard } from '@/features/board/dataSlice'
 import { useAppDispatch, useAppSelector } from '@/app/hooks'
+import { globalThemeContext } from '@/context/ThemeContext'
 
 type TDeleteBoardModalProps = {
     isDeleteBoardModalOpen: boolean,
@@ -8,6 +9,7 @@ type TDeleteBoardModalProps = {
 }
 
 const DeleteBoardModal: React.FC<TDeleteBoardModalProps> = ({ isDeleteBoardModalOpen, toggleDeleteBoardModal }) => {
+    const { themeValueBg } = globalThemeContext()
     const currentBoard = useAppSelector(selectCurrentBoard)
     const dispatch = useAppDispatch()
 
@@ -23,7 +25,7 @@ const DeleteBoardModal: React.FC<TDeleteBoardModalProps> = ({ isDeleteBoardModal
             aria-labelledby="contained-modal-title-vcenter"
             centered
         >
-            <div className='p-4'>
+            <div className={`p-4 ${themeValueBg}`}>
                 <Modal.Header className='block p-0 border-0'>
                     <Modal.Title
                         id="contained-modal-title-vcenter"

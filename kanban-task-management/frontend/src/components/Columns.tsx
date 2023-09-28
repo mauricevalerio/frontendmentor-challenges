@@ -2,10 +2,12 @@ import { globalEditModalContext } from '@/context/EditModalContext'
 import { useAppSelector } from '../app/hooks'
 import { selectCurrentBoard } from '../features/board/dataSlice'
 import Task from './Task'
+import { globalThemeContext } from '@/context/ThemeContext'
 
 const Columns: React.FC = () => {
     const { columns } = useAppSelector(selectCurrentBoard)
     const { toggleEditBoardModal } = globalEditModalContext()
+    const { theme } = globalThemeContext()
 
     const columnElements = columns.length > 0 ?
         columns.map(column => <div key={column.id} className='p-4'>
@@ -23,7 +25,7 @@ const Columns: React.FC = () => {
         </div>
 
     return (
-        <section className='flex overflow-scroll bg-light-bg min-h-screen'>
+        <section className={`flex overflow-scroll min-h-screen ${theme === 'dark' ? 'bg-very-dark-bg' : 'bg-light-bg'}`}>
             {columnElements}
         </section>
     )

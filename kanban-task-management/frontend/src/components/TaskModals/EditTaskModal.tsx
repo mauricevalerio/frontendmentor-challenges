@@ -5,6 +5,7 @@ import { IconCross } from '@/icons'
 import { nanoid } from 'nanoid'
 import { useAppDispatch, useAppSelector } from '@/app/hooks'
 import { editTask, selectCurrentBoard } from '@/features/board/dataSlice'
+import { globalThemeContext } from '@/context/ThemeContext'
 
 type TEditTaskModalProp = {
     isEditTaskModalOpen: boolean
@@ -15,7 +16,7 @@ type TEditTaskModalProp = {
 }
 
 const EditTaskModal: React.FC<TEditTaskModalProp> = ({ isEditTaskModalOpen, toggleEditTaskModal, column, newColumnId, taskData }) => {
-
+    const { themeValueBg, themeValueText, themeValueTextInput, themeValueBtnBg } = globalThemeContext()
     const [editTaskData, setEditTaskData] = useState<Ttask>(taskData)
     const { columns } = useAppSelector(selectCurrentBoard)
     const dispatch = useAppDispatch()
@@ -78,7 +79,7 @@ const EditTaskModal: React.FC<TEditTaskModalProp> = ({ isEditTaskModalOpen, togg
                 required
                 value={subtask.title}
                 onChange={e => handleEditSubtaskListChange(e, subtask.id)}
-                className='p-3 flex-1 block outline-none border-secondary-light border-1 border-opacity-25 rounded mb-2' />
+                className={`${themeValueBg} ${themeValueTextInput} p-3 flex-1 block outline-none border-secondary-light border-1 border-opacity-25 rounded mb-2`} />
             <button
                 onClick={(e) => handleRemoveSubtask(e, subtask.id)}
             ><IconCross /></button>
@@ -94,11 +95,11 @@ const EditTaskModal: React.FC<TEditTaskModalProp> = ({ isEditTaskModalOpen, togg
             aria-labelledby="contained-modal-title-vcenter"
             centered
         >
-            <div className='p-4'>
+            <div className={`p-4 ${themeValueBg}`}>
                 <Modal.Header className='block p-0 border-0'>
                     <Modal.Title
                         id="contained-modal-title-vcenter"
-                        className='font-bold mb-4'>
+                        className={`font-bold mb-4 ${themeValueText}`}>
                         Edit Task
                     </Modal.Title>
                 </Modal.Header>
@@ -106,7 +107,7 @@ const EditTaskModal: React.FC<TEditTaskModalProp> = ({ isEditTaskModalOpen, togg
                     <form autoComplete='off'
                         onSubmit={handleSubmitEditedTask}
                     >
-                        <label htmlFor='boardName' className='text-secondary-light font-bold'>Title</label>
+                        <label htmlFor='boardName' className={`font-bold ${themeValueText}`}>Title</label>
                         <input
                             required
                             type="text"
@@ -114,35 +115,35 @@ const EditTaskModal: React.FC<TEditTaskModalProp> = ({ isEditTaskModalOpen, togg
                             name='title'
                             value={editTaskData.title}
                             onChange={handleTaskDataEditChange}
-                            className='w-full p-3 block outline-none border-secondary-light border-1 border-opacity-25 rounded' />
+                            className={`${themeValueBg} ${themeValueTextInput} w-full p-3 block outline-none border-secondary-light border-1 border-opacity-25 rounded`} />
 
-                        <label htmlFor='description' className='text-secondary-light font-bold'>Description</label>
+                        <label htmlFor='description' className={`font-bold ${themeValueText}`}>Description</label>
                         <textarea id='description'
                             name='description'
                             value={editTaskData.description || ''}
                             onChange={handleTaskDataEditChange}
-                            className='w-full p-3 min-h-[150px] resize-none block outline-none border-secondary-light border-1 border-opacity-25 rounded' />
+                            className={`${themeValueBg} ${themeValueTextInput} w-full p-3 min-h-[150px] resize-none block outline-none border-secondary-light border-1 border-opacity-25 rounded`} />
 
 
-                        <label className='text-secondary-light font-bold mt-4'>Subtasks</label>
+                        <label className={`font-bold mt-4 ${themeValueText}`}>Subtasks</label>
                         {subtaskInputElements}
                         <button
                             onClick={handleAddSubtask}
-                            className='w-full bg-[rgba(99,95,199,0.10)] text-primary font-bold rounded-2xl p-4 mb-4'
+                            className={`${themeValueBtnBg} w-full text-primary font-bold rounded-3xl p-4 mb-4`}
                         >+ Add New Subtask</button>
 
-                        <label htmlFor="status" className='block text-secondary-light font-bold mb-2'>Status</label>
+                        <label htmlFor="status" className={`block font-bold mb-2 ${themeValueText}`}>Status</label>
                         <select
                             name="status"
                             id="status"
                             value={editNewColumnId}
                             onChange={handleChangeStatus}
-                            className='w-full my-4 px-2 py-4 border-2 border-[rgba(130,143,163,0.25)]'>
+                            className={`${themeValueTextInput} ${themeValueBg} w-full my-4 px-2 py-4 border-2 border-[rgba(130,143,163,0.25)]`}>
                             {dropdownColumnElements}
                         </select>
 
                         <button
-                            className='w-full bg-primary text-white font-bold rounded-2xl p-4 mb-4'
+                            className='w-full bg-primary text-white font-bold rounded-3xl p-4 mb-4'
                         >Save Changes</button>
                     </form>
                 </Modal.Body>

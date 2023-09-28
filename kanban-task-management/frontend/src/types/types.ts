@@ -8,13 +8,22 @@ export type TBoardProps = {
 }
 
 //CONTEXT TYPES
-export type EditModalContextProviderProp = {
+export type ContextProviderProp = {
     children: React.ReactNode
 }
 
 export type EditModalContextValue = {
     isEditBoardModalOpen: boolean,
     toggleEditBoardModal: () => void
+}
+
+export type ThemeContextValue = {
+    theme: string
+    toggleTheme: () => void
+    themeValueBg: string
+    themeValueText: string
+    themeValueTextInput: string
+    themeValueBtnBg: string
 }
 
 //DATA AND INITIAL STATE ON REDUX TYPES

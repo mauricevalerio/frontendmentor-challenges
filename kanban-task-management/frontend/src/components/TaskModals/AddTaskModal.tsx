@@ -6,6 +6,7 @@ import { addTask, selectCurrentBoard } from '@/features/board/dataSlice'
 import { TSubtask } from '@/types/types'
 import { generateSubtasksData } from '@/utils'
 import { nanoid } from 'nanoid'
+import { globalThemeContext } from '@/context/ThemeContext'
 
 type TAddTaskModalProps = {
     isAddTaskModalOpen: boolean,
@@ -20,6 +21,7 @@ type TTaskDetails = {
 
 const AddTaskModal: React.FC<TAddTaskModalProps> = ({ isAddTaskModalOpen, toggleAddTaskModal }) => {
 
+    const { themeValueBg, themeValueText, themeValueTextInput, themeValueBtnBg } = globalThemeContext()
     const selector = useAppSelector(selectCurrentBoard)
     const dispatch = useAppDispatch()
 
@@ -91,7 +93,7 @@ const AddTaskModal: React.FC<TAddTaskModalProps> = ({ isAddTaskModalOpen, toggle
             required
             value={subtask.title}
             onChange={e => handleSubtaskInputChange(e, subtask.id)}
-            className='p-3 flex-1 block outline-none border-secondary-light border-1 border-opacity-25 rounded mb-2' />
+            className={`${themeValueBg} ${themeValueTextInput} p-3 flex-1 block outline-none border-secondary-light border-1 border-opacity-25 rounded mb-2`} />
         <button onClick={(e) => handleRemoveSubtask(e, subtask.id)}><IconCross /></button>
     </div>
     )
@@ -105,18 +107,18 @@ const AddTaskModal: React.FC<TAddTaskModalProps> = ({ isAddTaskModalOpen, toggle
             aria-labelledby="contained-modal-title-vcenter"
             centered
         >
-            <div className='p-4'>
+            <div className={`p-4 ${themeValueBg}`}>
                 <Modal.Header className='items-center p-0 mb-4 border-0'>
                     <Modal.Title
                         id="contained-modal-title-vcenter"
-                        className='font-bold'>
+                        className={`font-bold ${themeValueText}`}>
                         Add New Task
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body className='p-0'>
                     <form autoComplete='off' onSubmit={handleAddTask}>
 
-                        <label htmlFor='title' className='text-secondary-light font-bold'>Title</label>
+                        <label htmlFor='title' className={`${themeValueText} font-bold`}>Title</label>
                         <input
                             required
                             type='text'
@@ -124,36 +126,36 @@ const AddTaskModal: React.FC<TAddTaskModalProps> = ({ isAddTaskModalOpen, toggle
                             name='title'
                             value={taskDetails.title}
                             onChange={handleTaskDetailsChange}
-                            className='w-full p-3 block outline-none border-secondary-light border-1 border-opacity-25 rounded' />
+                            className={`${themeValueBg} ${themeValueTextInput} w-full p-3 block outline-none border-secondary-light border-1 border-opacity-25 rounded`} />
 
-                        <label htmlFor='description' className='text-secondary-light font-bold'>Description</label>
+                        <label htmlFor='description' className={`${themeValueText} font-bold`}>Description</label>
                         <input
                             type='text'
                             id='description'
                             name='description'
                             value={taskDetails.description}
                             onChange={handleTaskDetailsChange}
-                            className='w-full p-3 block outline-none border-secondary-light border-1 border-opacity-25 rounded' />
+                            className={`${themeValueBg} ${themeValueTextInput} w-full p-3 block outline-none border-secondary-light border-1 border-opacity-25 rounded`} />
 
-                        <label className='text-secondary-light font-bold mt-4'>Subtasks</label>
+                        <label className={`font-bold mt-4 ${themeValueText}`}>Subtasks</label>
                         {subtaskInputElements}
                         <button
                             onClick={handleAddSubtask}
-                            className='w-full bg-[rgba(99,95,199,0.10)] text-primary font-bold rounded-2xl p-4 mb-4'
+                            className={`${themeValueBtnBg} w-full text-primary font-bold rounded-3xl p-4 mb-4`}
                         >+ Add New Subtask</button>
 
-                        <label className='text-secondary-light font-bold mt-4' htmlFor="status">Status</label>
+                        <label className={`font-bold mt-4 ${themeValueText}`} htmlFor="status">Status</label>
                         <select
                             id='status'
                             name='status'
                             value={taskDetails.status} //contains column id and not the column name
-                            className='w-full my-4 px-2 py-4 border-2 border-[rgba(130,143,163,0.25)]'
+                            className={`${themeValueTextInput} ${themeValueBg} cursor-pointer w-full my-4 px-2 py-4 border-2 border-[rgba(130,143,163,0.25)]`}
                             onChange={handleTaskDetailsChange}>
                             {statusDropdownElements}
                         </select>
 
                         <button
-                            className='w-full bg-primary text-white font-bold rounded-2xl p-4 mb-4'
+                            className='w-full bg-primary text-white font-bold rounded-3xl p-4 mb-4'
                         >Create Task</button>
                     </form>
                 </Modal.Body>
