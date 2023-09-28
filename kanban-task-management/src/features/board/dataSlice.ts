@@ -2,14 +2,11 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../../app/store'
 import data from '../../data.json'
 import { TBoard, TInitialState, Ttask } from '../../types/types'
-import { EStatus } from '../../types/enums'
 
 
 const initialState: TInitialState = {
     boards: data,
     currentBoard: data[0],
-    status: EStatus.IDLE,
-    error: null
 }
 
 export const dataSlice = createSlice({

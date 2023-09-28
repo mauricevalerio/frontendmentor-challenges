@@ -1,5 +1,3 @@
-import { EStatus } from './enums'
-
 //PROP TYPES
 export type TBoardProps = {
     board: TBoard,
@@ -55,7 +53,5 @@ export type TBoard = {
 
 export type TInitialState = {
     boards: TBoard[],
-    currentBoard: TBoard,
-    status: EStatus,
-    error: string | null
+    currentBoard: TBoard
 }
