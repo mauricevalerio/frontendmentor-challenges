@@ -92,7 +92,7 @@ const AddBoardModal: React.FC<TAddBoardModalProps> = ({ isAddBoardModalOpen, tog
                                 id='boardName'
                                 value={boardName}
                                 onChange={handleBoardNameChange}
-                                className={`${themeValueBg} w-full p-3 block outline-none border-secondary-light border-1 border-opacity-25 rounded
+                                className={`${themeValueBg} ${themeValueTextInput} w-full p-3 block outline-none border-secondary-light border-1 border-opacity-25 rounded
                              required:invalid:focus:border-destructive`} />
                         </div>
 

@@ -9,11 +9,13 @@ import { useState } from 'react'
 import DeleteBoardModal from './BoardModals/DeleteBoardModal'
 import AddTaskModal from './TaskModals/AddTaskModal'
 import { globalThemeContext } from '@/context/ThemeContext'
+import { IconLogoLight } from '@/icons'
+import { IconLogoDark } from '@/icons'
 
 const Header: React.FC = () => {
+    const { themeValueBg, themeValueTextInput, theme } = globalThemeContext()
     const currentBoard = useAppSelector(selectCurrentBoard)
     const { isEditBoardModalOpen, toggleEditBoardModal } = globalEditModalContext()
-    const { themeValueBg } = globalThemeContext()
 
     const [isDeleteBoardModalOpen, setIsDeleteBoardModalOpen] = useState<boolean>(false)
     const toggleDeleteBoardModal = (): void => { setIsDeleteBoardModalOpen(prevStatus => !prevStatus) }
@@ -23,16 +25,25 @@ const Header: React.FC = () => {
 
     return (
         <>
-            <header className={`p-4 flex justify-between ${themeValueBg}`}>
-                <div className='flex gap-2 items-center'>
-                    <IconLogoMobile />
-                    <Dropdown />
+            <header className={`sticky top-0 p-4 z-10 flex justify-between ${theme === 'dark' ? 'bg-dark-bg' : 'bg-white'}`}>
+                <div className='flex gap-2 md:gap-x-24 items-center'>
+                    <div className='md:hidden'><IconLogoMobile /></div>
+
+                    <div className='md:hidden'><Dropdown /></div>
+
+                    <div className='hidden md:inline-block md:p-4'>
+                        {theme === 'dark' ? <IconLogoLight /> : <IconLogoDark />}
+                    </div>
+
+                    <h1 className={`hidden md:inline-block font-bold text-xl ${themeValueTextInput}`}>{currentBoard.name}</h1>
                 </div>
                 <div className='flex gap-4 items-center'>
                     <button
                         onClick={toggleAddTaskModal}
                         disabled={currentBoard.columns?.length === 0 ? true : false}
-                        className='bg-primary py-2 px-4 rounded-full disabled:opacity-50'><IconAddTaskMobile />
+                        className='bg-primary py-2 px-4 rounded-full disabled:opacity-50 md:flex md:items-center md:gap-2'>
+                        <IconAddTaskMobile />
+                        <span className='hidden md:inline-block text-white font-bold'>Add New Task</span>
                     </button>
 
                     <BsDropdown>
@@ -43,13 +54,13 @@ const Header: React.FC = () => {
                         <BsDropdown.Menu className={`mt-4 ${themeValueBg}`}>
                             <BsDropdown.Item
                                 as='button'
-                                className='font-bold mb-2 text-secondary-light'
+                                className='font-bold mb-2 text-secondary-light hover:bg-[transparent]'
                                 onClick={toggleEditBoardModal}>Edit Board
                             </BsDropdown.Item>
 
                             <BsDropdown.Item
                                 as='button'
-                                className='text-destructive font-bold'
+                                className='text-destructive font-bold hover:bg-[transparent]'
                                 onClick={toggleDeleteBoardModal}
                             >Delete Board</BsDropdown.Item>
                         </BsDropdown.Menu>

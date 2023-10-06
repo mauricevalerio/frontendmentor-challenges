@@ -97,14 +97,14 @@ const ViewTaskModal: React.FC<ViewTaskModalProps> = ({ isTaskModalOpen, toggleTa
                             <BsDropdown.Menu className={`mt-4 ${themeValueBg}`}>
                                 <BsDropdown.Item
                                     as='button'
-                                    className='font-bold mb-2 text-secondary-light'
+                                    className='font-bold mb-2 text-secondary-light hover:bg-[transparent]'
                                     onClick={toggleEditTaskModal}
                                 >Edit Task
                                 </BsDropdown.Item>
 
                                 <BsDropdown.Item
                                     as='button'
-                                    className='text-destructive font-bold'
+                                    className='text-destructive font-bold hover:bg-[transparent]'
                                     onClick={toggleDeleteTaskModal}
                                 >Delete Task</BsDropdown.Item>
                             </BsDropdown.Menu>

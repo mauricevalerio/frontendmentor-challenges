@@ -31,33 +31,43 @@ const Dropdown: React.FC = () => {
 
     return (
         <>
-            <BsDropdown>
-                <div className='dropdown-backdrop'></div>
-                <BsDropdown.Toggle
-                    className={`${theme === 'dark' ? 'bg-dark-bg' : 'bg-white'} hover:bg-[transparent] flex items-center gap-x-2 p-0 w-full text-light border-none after:content-none`}>
-                    <h1 className={`text-lg font-bold ${themeValueTextInput}`}>{currentBoard.name}</h1>
-                    <div className='chevron'>
-                        <IconChevronDown />
+            <BsDropdown className='md:h-full'>
+                <div className='md:hidden'>
+                    <div className='dropdown-backdrop'></div>
+                    <BsDropdown.Toggle
+                        className={`${theme === 'dark' ? 'bg-dark-bg' : 'bg-white'} hover:bg-[transparent] flex items-center gap-x-2 p-0 w-full text-light border-none after:content-none`}>
+                        <h1 className={`text-lg font-bold ${themeValueTextInput}`}>{currentBoard.name}</h1>
+                        <div className='chevron'>
+                            <IconChevronDown />
+                        </div>
+                    </BsDropdown.Toggle>
+                </div>
+
+                <BsDropdown.Menu show className={`md:transform-none md:mt-0 md:inline-block md:relative md:shadow-none md:p-0 shadow-[0px_10px_20px_0px_rgba(54,78,126,0.25)] py-4 pe-4 mt-8 border-none ${themeValueBg}`}>
+
+                    <div className='md:flex md:flex-col md:justify-between md:h-full'>
+                        <div>
+                            <BsDropdown.ItemText>
+                                <h1 className='text-secondary-light uppercase tracking-[2.5px] text-sm font-bold mx-4 mb-4'>All Boards ({boards.length})</h1>
+                            </BsDropdown.ItemText>
+
+                            {boardNames}
+
+                            <BsDropdown.Item as='button'
+                                onClick={toggleAddBoardModal}
+                                className='p-0 hover:bg-[transparent] active:bg-[transparent] focus:bg-[transparent]'>
+                                <p className='flex items-center gap-4 mt-4 mb-8 ms-4 me-10 text-lg font-bold text-primary'>
+                                    <IconBoard />
+                                    + Create New Board
+                                </p>
+                            </BsDropdown.Item>
+                        </div>
+
+                        <div className='mt-auto'>
+                            <ThemeToggler />
+                        </div>
                     </div>
-                </BsDropdown.Toggle>
 
-                <BsDropdown.Menu className={`shadow-[0px_10px_20px_0px_rgba(54,78,126,0.25)] py-4 pe-4 mt-8 border-none ${themeValueBg}`}>
-                    <BsDropdown.ItemText>
-                        <h1 className='text-secondary-light uppercase tracking-[2.5px] text-sm font-bold mx-4 mb-4'>All Boards ({boards.length})</h1>
-                    </BsDropdown.ItemText>
-
-                    {boardNames}
-
-                    <BsDropdown.Item as='button'
-                        onClick={toggleAddBoardModal}
-                        className='p-0 hover:bg-[transparent]'>
-                        <p className='flex items-center gap-4 mt-4 mb-8 ms-4 me-10 text-lg font-bold text-primary'>
-                            <IconBoard />
-                            + Create New Board
-                        </p>
-                    </BsDropdown.Item>
-
-                    <ThemeToggler />
                 </BsDropdown.Menu>
             </BsDropdown >
 
