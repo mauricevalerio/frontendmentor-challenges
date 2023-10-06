@@ -32,6 +32,10 @@ export default {
       'lg': '1.125rem',
       'xl': '1.5rem',
     },
+    backgroundImage: {
+      'gradient-dark': 'linear-gradient(180deg, rgba(43, 44, 55, 0.25) 0%, rgba(43, 44, 55, 0.13) 100%)',
+      'gradient-light': 'linear-gradient(180deg, #E9EFFA 0%, rgba(233, 239, 250, 0.50) 100%)'
+    }
   },
   plugins: [],
 }
