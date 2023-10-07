@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '../app/hooks'
 import { selectBoardList, selectCurrentBoard, setCurrentBoard } from '../features/board/dataSlice'
 import BoardNames from './BoardNames'
 import ThemeToggler from './ThemeToggler'
+
 import AddBoardModal from './BoardModals/AddBoardModal'
 import BsDropdown from 'react-bootstrap/Dropdown'
 import { globalThemeContext } from '@/context/ThemeContext'
@@ -31,7 +32,7 @@ const Dropdown: React.FC = () => {
 
     return (
         <>
-            <BsDropdown className='md:h-full'>
+            <BsDropdown>
                 <div className='md:hidden'>
                     <div className='dropdown-backdrop'></div>
                     <BsDropdown.Toggle
@@ -63,9 +64,8 @@ const Dropdown: React.FC = () => {
                             </BsDropdown.Item>
                         </div>
 
-                        <div className='mt-auto'>
-                            <ThemeToggler />
-                        </div>
+                        <ThemeToggler />
+
                     </div>
 
                 </BsDropdown.Menu>

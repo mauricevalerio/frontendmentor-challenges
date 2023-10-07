@@ -3,11 +3,15 @@ import { useAppSelector } from '../app/hooks'
 import { selectCurrentBoard } from '../features/board/dataSlice'
 import Task from './Task'
 import { globalThemeContext } from '@/context/ThemeContext'
+import { globalDrawerTogglerContext } from '@/context/DrawerTogglerContext'
+
+
 
 const Columns: React.FC = () => {
     const { columns } = useAppSelector(selectCurrentBoard)
     const { toggleEditBoardModal } = globalEditModalContext()
     const { theme } = globalThemeContext()
+    const { isDrawerOpen } = globalDrawerTogglerContext()
 
     const columnElements = columns.map(column => <div key={column.id} className='p-4'>
         <h2 className='text-sm font-bold tracking-[2.5px] uppercase mb-4 text-secondary-light'>{`${column.name} (${column.tasks.length})`}</h2>
@@ -19,15 +23,15 @@ const Columns: React.FC = () => {
     return (
         <>
             {columns.length > 0 ?
-                <div className={`min-h-full md:absolute md:left-[300px] ${theme === 'dark' ? 'bg-very-dark-bg' : 'bg-light-bg'}`}>
+                <div className={`min-h-full md:absolute ${isDrawerOpen ? 'md:left-[300px]' : ''}  ${theme === 'dark' ? 'bg-very-dark-bg' : 'bg-light-bg'}`}>
                     <section className='flex'>
                         {columnElements}
                         <div
-                            className='cursor-pointer p-4 rounded-2xl'
+                            className='cursor-pointer p-4 rounded-2xl  min-h-screen'
                             onClick={toggleEditBoardModal}
                         >
                             <div
-                                className={`min-w-max h-full rounded-2xl px-10 flex items-center font-bold text-lg text-secondary-light ${theme === 'dark' ? 'bg-gradient-dark' : 'bg-gradient-light'}`}
+                                className={`min-w-max min-h-full rounded-2xl px-10 flex items-center font-bold text-lg text-secondary-light ${theme === 'dark' ? 'bg-gradient-dark' : 'bg-gradient-light'}`}
                             >+ New Column</div>
                         </div>
                     </section>
