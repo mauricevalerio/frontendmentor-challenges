@@ -24,6 +24,11 @@ export type ThemeContextValue = {
     themeValueBtnBg: string
 }
 
+export type DrawerTogglerContextValue = {
+    isDrawerOpen: boolean,
+    toggleDrawer: () => void
+}
+
 //DATA AND INITIAL STATE ON REDUX TYPES
 export type TSubtask = {
     id: number | string,
