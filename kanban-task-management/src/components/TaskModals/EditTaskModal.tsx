@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { IconCross } from '@/icons'
 import { nanoid } from 'nanoid'
 import { useAppDispatch, useAppSelector } from '@/app/hooks'
-import { editTask, selectCurrentBoard } from '@/features/board/dataSlice'
+import { editTask, selectCurrentBoard } from '@/features/dataSlice'
 import { globalThemeContext } from '@/context/ThemeContext'
 
 type TEditTaskModalProp = {

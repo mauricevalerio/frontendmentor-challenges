@@ -1,5 +1,5 @@
 import Modal from 'react-bootstrap/Modal'
-import { deleteBoard, selectCurrentBoard } from '@/features/board/dataSlice'
+import { deleteBoard, selectCurrentBoard } from '@/features/dataSlice'
 import { useAppDispatch, useAppSelector } from '@/app/hooks'
 import { globalThemeContext } from '@/context/ThemeContext'
 

@@ -1,6 +1,6 @@
 import { globalEditModalContext } from '@/context/EditModalContext'
 import { useAppSelector } from '../app/hooks'
-import { selectCurrentBoard } from '../features/board/dataSlice'
+import { selectCurrentBoard } from '@/features/dataSlice'
 import Task from './Task'
 import { globalThemeContext } from '@/context/ThemeContext'
 import { globalDrawerTogglerContext } from '@/context/DrawerTogglerContext'

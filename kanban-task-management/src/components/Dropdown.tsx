@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { IconChevronDown, IconBoard } from '../icons'
 import { useAppDispatch, useAppSelector } from '../app/hooks'
-import { selectBoardList, selectCurrentBoard, setCurrentBoard } from '../features/board/dataSlice'
+import { selectBoardList, selectCurrentBoard, setCurrentBoard } from '../features/dataSlice'
 import BoardNames from './BoardNames'
 import ThemeToggler from './ThemeToggler'
 

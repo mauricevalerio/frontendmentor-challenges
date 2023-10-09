@@ -2,7 +2,7 @@ import Header from './components/Header'
 import Columns from './components/Columns'
 import Drawer from './components/Drawer'
 import { useAppSelector } from './app/hooks'
-import { selectBoardList } from './features/board/dataSlice'
+import { selectBoardList } from './features/dataSlice'
 import EmptyBoard from './components/EmptyBoard'
 import { globalThemeContext } from './context/ThemeContext'
 

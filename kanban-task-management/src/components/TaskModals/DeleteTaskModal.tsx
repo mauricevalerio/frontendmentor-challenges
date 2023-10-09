@@ -1,7 +1,7 @@
 import { Ttask } from '@/types/types'
 import Modal from 'react-bootstrap/Modal'
 import { useAppDispatch } from '@/app/hooks'
-import { deleteTask } from '@/features/board/dataSlice'
+import { deleteTask } from '@/features/dataSlice'
 import { globalThemeContext } from '@/context/ThemeContext'
 
 type TDeleteTaskModalProp = {

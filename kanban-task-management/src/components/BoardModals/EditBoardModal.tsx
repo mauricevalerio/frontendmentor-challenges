@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { IconCross } from '@/icons'
 import { useAppDispatch, useAppSelector } from '@/app/hooks'
 import { TBoard } from '@/types/types'
-import { editBoard, selectCurrentBoard } from '@/features/board/dataSlice'
+import { editBoard, selectCurrentBoard } from '@/features/dataSlice'
 import { nanoid } from 'nanoid'
 import { globalThemeContext } from '@/context/ThemeContext'
 
