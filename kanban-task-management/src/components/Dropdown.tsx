@@ -1,10 +1,9 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { IconChevronDown, IconBoard } from '../icons'
 import { useAppDispatch, useAppSelector } from '../app/hooks'
 import { selectBoardList, selectCurrentBoard, setCurrentBoard } from '../features/dataSlice'
 import BoardNames from './BoardNames'
 import ThemeToggler from './ThemeToggler'
-
 import AddBoardModal from './BoardModals/AddBoardModal'
 import BsDropdown from 'react-bootstrap/Dropdown'
 import { globalThemeContext } from '@/context/ThemeContext'
@@ -16,6 +15,15 @@ const Dropdown: React.FC = () => {
 
     const { theme, themeValueTextInput, themeValueBg } = globalThemeContext()
     const [isAddBoardModalOpen, setIsAddBoardModalOpen] = useState<boolean>(false)
+    const [width, setWidth] = useState<number>(window.innerWidth)
+
+    useEffect(() => {
+        const listenWidth = () => { setWidth(window.innerWidth) }
+
+        window.addEventListener('resize', listenWidth)
+
+        return () => window.removeEventListener('resize', listenWidth)
+    }, [width])
 
     const toggleAddBoardModal = (): void => { setIsAddBoardModalOpen(prevStatus => !prevStatus) }
 
@@ -44,7 +52,7 @@ const Dropdown: React.FC = () => {
                     </BsDropdown.Toggle>
                 </div>
 
-                <BsDropdown.Menu show className={`md:transform-none md:mt-0 md:inline-block md:relative md:shadow-none md:p-0 shadow-[0px_10px_20px_0px_rgba(54,78,126,0.25)] py-4 pe-4 mt-8 border-none ${themeValueBg}`}>
+                <BsDropdown.Menu show={width >= 768 ? true : false} className={`md:transform-none md:mt-0 md:inline-block md:relative md:shadow-none md:p-0 shadow-[0px_10px_20px_0px_rgba(54,78,126,0.25)] py-4 pe-4 mt-8 border-none ${themeValueBg}`}>
 
                     <div className='md:flex md:flex-col md:justify-between md:h-full'>
                         <div>
