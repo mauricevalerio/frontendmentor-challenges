@@ -64,5 +64,5 @@ Deploy as a full stack web application.
 
 ## Author
 
-- Website - [Maurice Valerio](https://www.your-site.com)
+- Website - [Maurice Valerio](https://mauricevalerio.dev)
 - Frontend Mentor - [@mauricevalerio](https://www.frontendmentor.io/profile/mauricevalerio)
