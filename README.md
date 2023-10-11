@@ -3,6 +3,7 @@ Collection of my solutions to [frontendmentor challenges](https://www.frontendme
 
 | Challenge Name | Difficulty |
 | ----------- | ----------- |
+| [Kanban Task Management](https://kanbantaskmgmt.netlify.app/) | Guru |
 | [Rock, Paper, Scissors](https://r0ck-pap3r-scissors.netlify.app/) | Advanced |
 | [REST Countries API with Color Switcher](https://a-whole-new-world.netlify.app/) | Advanced |
 | [IP Address Tracker](https://trackingip.netlify.app/) | Intermediate |
