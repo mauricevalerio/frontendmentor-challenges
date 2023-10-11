@@ -103,15 +103,47 @@ export const dataSlice = createSlice({
             state.boards = state.boards.map(board => board.id === state.currentBoard.id ?
                 { ...board, columns: state.currentBoard.columns }
                 : board)
-        }
+        },
+        onDrag(state, action) {
 
+            //snapshot of old state of source column
+            const tempCol = state.currentBoard.columns.find(column => column.id === action.payload.source.droppableId)
+
+            //update source column
+            state.currentBoard.columns = state.currentBoard.columns.map(column => column.id === action.payload.source.droppableId ?
+                { ...column, tasks: column.tasks.filter(task => task.id !== action.payload.draggableId) }
+                : column
+            )
+
+            //pulls the task data that is currently dragged
+            let tempTask = tempCol?.tasks.find(task => task.id === action.payload.draggableId)
+
+
+            //update destination column
+            state.currentBoard.columns = state.currentBoard.columns.map(column => {
+                if (column.id === action.payload.destination.droppableId) {
+                    const newTasks = Array.from(column.tasks)
+
+                    if (tempTask) {
+                        newTasks.splice(action.payload.destination.index, 0, tempTask)
+                    }
+
+                    return { ...column, tasks: newTasks }
+                }
+                return column
+            })
+
+            state.boards = state.boards.map(board => board.id === state.currentBoard.id ?
+                { ...board, columns: state.currentBoard.columns }
+                : board)
+        }
     }
 })
 
 
 
 export const { setCurrentBoard, addBoard, editBoard, deleteBoard,
-    addTask, editTask, deleteTask } = dataSlice.actions
+    addTask, editTask, deleteTask, onDrag } = dataSlice.actions
 
 export const selectBoardList = (state: RootState) => state.data.boards.map(board => ({ id: board.id, name: board.name, columns: board.columns }))
 
