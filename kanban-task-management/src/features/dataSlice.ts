@@ -32,9 +32,6 @@ const initialState: TInitialState = {
     currentBoard: loadCurrentBoard()
 }
 
-console.log(initialState.boards)
-console.log(data)
-
 export const dataSlice = createSlice({
     name: 'data',
     initialState,
