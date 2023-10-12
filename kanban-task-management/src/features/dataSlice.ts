@@ -3,11 +3,37 @@ import type { RootState } from '@/app/store'
 import data from '@/data.json'
 import { TBoard, TInitialState, Ttask } from '@/types/types'
 
+const loadBoards = (): TBoard[] => {
+    try {
+        const serialState = localStorage.getItem('boards')
+        if (serialState === null) {
+            return data
+        }
+        return JSON.parse(serialState)
+    } catch (err) {
+        return data
+    }
+}
+
+const loadCurrentBoard = (): TBoard => {
+    try {
+        const serialState = localStorage.getItem('currentBoard')
+        if (serialState === null) {
+            return data[0]
+        }
+        return JSON.parse(serialState)
+    } catch (err) {
+        return data[0]
+    }
+}
 
 const initialState: TInitialState = {
-    boards: data,
-    currentBoard: data[0],
+    boards: loadBoards(),
+    currentBoard: loadCurrentBoard()
 }
+
+console.log(initialState.boards)
+console.log(data)
 
 export const dataSlice = createSlice({
     name: 'data',
