@@ -1,0 +1,431 @@
+@use 'base';
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
+
+* {
+  font-family: 'Ubuntu', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  font-style: italic;
+}
+
+a {
+  text-decoration: none;
+}
+
+main {
+  background: #EFF5FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+section {
+  background: #fff;
+  box-shadow: 0px 25px 40px -20px rgba(0, 0, 0, 0.10);
+  padding: 1rem;
+  border-radius: .5rem;
+  max-width: max-content;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  height: 75%;
+}
+
+nav {
+  background: center/cover no-repeat url("bg-sidebar-desktop.svg");
+  height: 100%;
+  width: 30%;
+  border-radius: 5px;
+  padding: 2rem;
+
+  ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  li.step {
+    display: flex;
+    gap: 1rem;
+  }
+
+  p.step-number {
+    display: inline-block;
+    padding: .5rem;
+    border: 2px solid #fff;
+    border-radius: 100%;
+    color: #fff;
+  }
+
+  p.step-number.active-step {
+    background: base.$sky-blue;
+    color: base.$denim;
+    border: 2px solid base.$sky-blue;
+  }
+
+  div {
+
+    span,
+    h3 {
+      text-transform: uppercase;
+    }
+
+    h3 {
+      font-size: .75rem;
+      color: base.$light-blue;
+    }
+
+    span {
+      color: #fff;
+      font-weight: 700;
+    }
+  }
+}
+
+div.form-item {
+  width: 500px;
+}
+
+h2.form-step-header {
+  margin: 0;
+  margin-bottom: 1.5rem;
+  color: base.$denim;
+}
+
+p.instructions {
+  margin-bottom: 1.5rem;
+  color: base.$grey;
+}
+
+.navigation-buttons {
+  display: flex;
+  gap: .5rem;
+  margin-top: 3rem;
+
+  button {
+    border: none;
+    font-family: inherit;
+    cursor: pointer;
+    font-weight: 500;
+  }
+
+  &-next,
+  &-confirm {
+    border-radius: 8px;
+    background: base.$denim;
+    padding: .75rem 1.5rem;
+    color: #fff;
+    margin-left: auto;
+
+    &:hover {
+      background: #164A8A;
+    }
+  }
+
+  &-back {
+    background: none;
+    color: base.$grey;
+
+    &:hover {
+      color: base.$denim;
+    }
+  }
+}
+
+.info {
+
+  input {
+    padding: .75rem 1rem;
+    width: 100%;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    border: 1px solid base.$border-color;
+
+    &:focus,
+    &:hover {
+      outline: 1px solid base.$blue-hover;
+    }
+
+  }
+
+  &-label,
+  &-input {
+    color: base.$denim;
+  }
+
+  &-label {
+    font-size: .9rem;
+  }
+
+  &-error {
+    position: relative;
+  }
+
+  &-error-message {
+    font-size: .8rem;
+    font-weight: 700;
+    color: base.$red-errors;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  &-error-message+input {
+    outline: 1px solid base.$red-errors;
+  }
+}
+
+.plan-type {
+  display: flex;
+  gap: 1rem;
+
+  &-radio {
+    width: 140px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    border-radius: 8px;
+    border: 1px solid base.$border-color;
+    cursor: pointer;
+
+    &:has(input[type="radio"]:checked) {
+      outline: 2px solid base.$blue-hover;
+    }
+
+    &:hover {
+      border: 1px solid base.$blue-hover;
+    }
+
+    img {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  &-input-radio {
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  &-text {
+    color: base.$denim;
+    font-weight: 500;
+  }
+
+  &-price {
+    font-size: .8rem;
+    color: base.$grey;
+    margin: .5rem 0;
+  }
+
+  &-freebies {
+    font-size: .75rem;
+    color: base.$denim;
+    opacity: 0;
+  }
+
+  &-freebies.show {
+    opacity: 1;
+  }
+}
+
+.plan-billing {
+  margin-top: 2rem;
+  display: flex;
+  gap: .5rem;
+  justify-content: center;
+
+  label {
+    cursor: pointer;
+    color: base.$grey;
+  }
+
+  .active {
+    color: base.$denim;
+    font-weight: 700;
+  }
+
+  .billing-toggler {
+    position: relative;
+    display: inline-block;
+    min-width: 40px;
+    min-height: 20px;
+
+    input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+
+      &:checked+.slider:before {
+        transform: translateX(20px);
+      }
+    }
+
+    .slider {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: base.$denim;
+      transition: .4s;
+
+      &.round {
+        border-radius: 34px;
+
+        &:before {
+          border-radius: 50%;
+        }
+      }
+
+      &:before {
+        position: absolute;
+        content: "";
+        height: 12px;
+        width: 12px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+      }
+    }
+  }
+}
+
+.addons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  &-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid base.$border-color;
+    cursor: pointer;
+
+    &:has(input[type="checkbox"]:checked) {
+      outline: 2px solid base.$blue-hover;
+    }
+
+    &:hover {
+      border: 1px solid base.$blue-hover;
+    }
+  }
+
+  div {
+    margin-left: 1rem;
+  }
+
+  &-service {
+    color: base.$denim;
+    font-weight: 500;
+  }
+
+  &-description {
+    margin-top: .5rem;
+    color: base.$grey;
+    font-size: .75rem;
+  }
+
+  &-cost {
+    margin-left: auto;
+    color: base.$blue-hover;
+    font-size: .75rem;
+  }
+}
+
+.summary {
+
+  &-plan {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid base.$grey;
+    padding: 1rem 0;
+  }
+
+  &-plan-type {
+    color: base.$denim;
+    font-weight: 500;
+
+    button {
+      margin-top: .5rem;
+      background: none;
+      border: none;
+      color: base.$grey;
+      font-family: inherit;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+
+  &-plan-cost {
+    color: base.$denim;
+    font-weight: 700;
+  }
+
+  &-addons {
+    padding: 1rem 0;
+  }
+
+  &-addons-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+
+    .addon-service {
+      color: base.$grey;
+
+    }
+
+    .addon-cost {
+      color: base.$denim;
+      font-size: .85rem;
+    }
+  }
+
+  &-total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+
+    span:first-child {
+      color: base.$grey;
+      font-size: .85rem;
+    }
+
+    span:nth-child(2) {
+      color: base.$blue-hover;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+  }
+}
+
+.complete {
+  max-width: 500px;
+  text-align: center;
+
+  h2 {
+    margin: 1rem 0;
+    color: base.$denim;
+  }
+
+  p {
+    color: base.$grey;
+  }
+}
