@@ -429,3 +429,80 @@ p.instructions {
     color: base.$grey;
   }
 }
+
+@media (max-width: 768px) {
+  div.form-item {
+    width: auto;
+  }
+
+  .plan-type {
+    flex-direction: column;
+
+    img {
+      margin: 0;
+    }
+
+    &-input-radio {
+      width: auto;
+    }
+
+    &-radio {
+      width: 100%;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    &-price {
+      margin: 0;
+    }
+  }
+
+  main {
+
+    &>section {
+      padding: 0;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    nav {
+      background: 25% 50%/cover no-repeat url("bg-sidebar-mobile.svg");
+      width: 100%;
+      min-height: 175px;
+      border-radius: 0;
+
+      ul {
+        flex-direction: row;
+        justify-content: center;
+
+        div {
+          display: none;
+        }
+      }
+    }
+
+    .form-padding,
+    .complete {
+      padding: 0 1.5rem;
+      background: #EFF5FF;
+    }
+
+    form,
+    .complete {
+      padding: 1rem;
+      z-index: 1;
+      background: #FFF;
+      top: -75px;
+      position: relative;
+      border-radius: 5px;
+    }
+
+    .complete {
+      min-height: 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

@@ -175,31 +175,33 @@ export default function App() {
     <main>
       <section>
         <NavigationComponent stepLabel={stepLabel} currentStepIndex={currentStepIndex} />
+        <div className='form-padding'>
+          {isFormSubmitted ?
+            <Complete />
+            :
 
-        {isFormSubmitted ?
-          <Complete />
-          :
-          <form onSubmit={onSubmit}>
-            {step}
-            <div className='navigation-buttons'>
-              {!isFirstStep &&
+            <form onSubmit={onSubmit}>
+              {step}
+              <div className='navigation-buttons'>
+                {!isFirstStep &&
+                  <button
+                    type="button"
+                    onClick={back}
+                    className="navigation-buttons-back"
+                  >
+                    Go Back
+                  </button>
+                }
                 <button
-                  type="button"
-                  onClick={back}
-                  className="navigation-buttons-back"
+                  type="submit"
+                  className={`${isLastStep ? "navigation-buttons-confirm" : "navigation-buttons-next"}`}
                 >
-                  Go Back
-                </button>
-              }
-              <button
-                type="submit"
-                className={`${isLastStep ? "navigation-buttons-confirm" : "navigation-buttons-next"}`}
-              >
-                {isLastStep ? "Confirm" : "Next Step"}</button>
-            </div>
-          </form>
-        }
+                  {isLastStep ? "Confirm" : "Next Step"}</button>
+              </div>
+            </form>
 
+          }
+        </div>
       </section>
     </main>
   )

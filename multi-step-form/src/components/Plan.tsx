@@ -43,9 +43,11 @@ export function PlanComponent({ data, updateData }: FormComponentProps) {
                         onChange={updatePlan}
                         className='plan-type-input-radio'
                     />
-                    <p className='plan-type-text'>{`${PlanType.ARCADE[0].toUpperCase()}${PlanType.ARCADE.slice(1).toLowerCase()}`}</p>
-                    <p className='plan-type-price'>{plan.billing === PlanBilling.MONTHLY ? `$${PlanCost.ARCADE_MONTHLY}/mo` : `$${PlanCost.ARCADE_YEARLY}/yr`}</p>
-                    <p className={`plan-type-freebies ${plan.billing !== PlanBilling.MONTHLY ? 'show' : ''}`}>2 months free</p>
+                    <div>
+                        <p className='plan-type-text'>{`${PlanType.ARCADE[0].toUpperCase()}${PlanType.ARCADE.slice(1).toLowerCase()}`}</p>
+                        <p className='plan-type-price'>{plan.billing === PlanBilling.MONTHLY ? `$${PlanCost.ARCADE_MONTHLY}/mo` : `$${PlanCost.ARCADE_YEARLY}/yr`}</p>
+                        <p className={`plan-type-freebies ${plan.billing !== PlanBilling.MONTHLY ? 'show' : ''}`}>2 months free</p>
+                    </div>
                 </label>
 
                 <label htmlFor="advanced" className='plan-type-radio'>
@@ -58,9 +60,11 @@ export function PlanComponent({ data, updateData }: FormComponentProps) {
                         onChange={updatePlan}
                         className='plan-type-input-radio'
                     />
-                    <p className='plan-type-text'>{`${PlanType.ADVANCED[0].toUpperCase()}${PlanType.ADVANCED.slice(1).toLowerCase()}`}</p>
-                    <p className='plan-type-price'>{plan.billing === PlanBilling.MONTHLY ? `$${PlanCost.ADVANCED_MONTHLY}/mo` : `$${PlanCost.ADVANCED_YEARLY}/yr`}</p>
-                    <p className={`plan-type-freebies ${plan.billing !== PlanBilling.MONTHLY ? 'show' : ''}`}>2 months free</p>
+                    <div>
+                        <p className='plan-type-text'>{`${PlanType.ADVANCED[0].toUpperCase()}${PlanType.ADVANCED.slice(1).toLowerCase()}`}</p>
+                        <p className='plan-type-price'>{plan.billing === PlanBilling.MONTHLY ? `$${PlanCost.ADVANCED_MONTHLY}/mo` : `$${PlanCost.ADVANCED_YEARLY}/yr`}</p>
+                        <p className={`plan-type-freebies ${plan.billing !== PlanBilling.MONTHLY ? 'show' : ''}`}>2 months free</p>
+                    </div>
                 </label>
 
                 <label htmlFor="pro" className='plan-type-radio'>
@@ -73,9 +77,11 @@ export function PlanComponent({ data, updateData }: FormComponentProps) {
                         onChange={updatePlan}
                         className='plan-type-input-radio'
                     />
-                    <p className='plan-type-text'>{`${PlanType.PRO[0].toUpperCase()}${PlanType.PRO.slice(1).toLowerCase()}`}</p>
-                    <p className='plan-type-price'>{plan.billing === PlanBilling.MONTHLY ? `$${PlanCost.PRO_MONTHLY}/mo` : `$${PlanCost.PRO_YEARLY}/yr`}</p>
-                    <p className={`plan-type-freebies ${plan.billing !== PlanBilling.MONTHLY ? 'show' : ''}`}>2 months free</p>
+                    <div>
+                        <p className='plan-type-text'>{`${PlanType.PRO[0].toUpperCase()}${PlanType.PRO.slice(1).toLowerCase()}`}</p>
+                        <p className='plan-type-price'>{plan.billing === PlanBilling.MONTHLY ? `$${PlanCost.PRO_MONTHLY}/mo` : `$${PlanCost.PRO_YEARLY}/yr`}</p>
+                        <p className={`plan-type-freebies ${plan.billing !== PlanBilling.MONTHLY ? 'show' : ''}`}>2 months free</p>
+                    </div>
                 </label>
             </div>
 
