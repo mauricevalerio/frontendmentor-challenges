@@ -1,0 +1,53 @@
+$font-stack: 'Barlow Condensed', sans-serif;
+$font-size: 18px;
+$primary-red-color: hsl(0, 100%, 68%);
+$very-dark-blue: hsl(230, 29%, 20%);
+$dark-grayish-blue: hsl(230, 11%, 40%);
+$grayish-blue: hsl(231, 7%, 65%);
+$light-grayish-blue: hsl(207, 33%, 95%);
+
+%reset {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+%margin-bottom {
+    margin-bottom: 1rem;
+}
+
+@mixin flex($justify-content) {
+    display: flex;
+    align-items: center;
+    justify-content: $justify-content;
+}
+
+@mixin cta($background, $size, $padding, $border-radius, $font-weight) {
+    color: #fff;
+    display: inline-block;
+    text-transform: uppercase;
+    margin-right: 1rem;
+    background: $background;
+    font-size: $size;
+    padding: $padding;
+    border-radius: $border-radius;
+    font-weight: $font-weight;
+}
+
+@mixin small-text($letter-spacing, $size) {
+    letter-spacing: $letter-spacing;
+    color: $grayish-blue;
+    font-size: $size;
+    text-transform: uppercase;
+}
+
+@mixin text-style($color, $size, $text-transform, $width) {
+    color: $color;
+    font-size: $size;
+    text-transform: $text-transform;
+    line-height: 1;
+    width: $width;
+    @extend %margin-bottom;
+}
