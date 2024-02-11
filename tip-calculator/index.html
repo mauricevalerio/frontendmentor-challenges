@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
+  <title>Tip Calculator</title>
+</head>
+<body>
+
+  <img src="./assets/logo.svg" alt="Splitter Logo" />
+
+  <main>
+    <form>
+
+      <label for="total-bill">Bill</label>
+      <div class="total-bill">
+        <img src="./assets/icon-dollar.svg" alt="Dolllar sign" />
+        <input type="number" id="total-bill" class="total-bill" placeholder="0"/>
+      </div>
+
+      <div class="tip-percent">
+        <p>Select Tip %</p>
+      
+        <label for="tip-five">
+          <input type="radio" id="tip-five" name="tip-percent-radio" class="tip-percent-radio" value=".05" />
+          <label for="tip-five">5%</label>
+        </label>
+  
+        <label for="tip-ten">
+          <input type="radio" id="tip-ten" name="tip-percent-radio" class="tip-percent-radio" value=".10" />
+          <label for="tip-ten">10%</label>
+        </label>
+  
+        <label for="tip-fifteen">
+          <input type="radio" id="tip-fifteen" name="tip-percent-radio" class="tip-percent-radio" value=".15" />
+          <label for="tip-fifteen">15%</label>
+        </label>
+  
+        <label for="tip-twenty">
+          <input type="radio" id="tip-twenty" name="tip-percent-radio" class="tip-percent-radio" value=".20" />
+          <label for="tip-twenty">20%</label>
+        </label>
+  
+        <label for="tip-fifty">
+          <input type="radio" id="tip-fifty" name="tip-percent-radio" class="tip-percent-radio" value=".50" />
+          <label for="tip-fifty">50%</label>
+        </label>
+
+        <input type="number" id="tip-custom" class="tip-custom" placeholder="Custom" />
+      </div>
+
+      <div class="people-count-error">
+        <label for="people-count">Number of People</label>
+        <span class="error-message"></span>
+      </div>
+      <div class="people-count">
+        <img src="./assets/icon-person.svg" alt="person icon" />
+        <input type="number" id="people-count" class="people-count" placeholder="0" />
+      </div>
+      
+    </form>
+
+    <section>
+      
+      <div>
+        <p>Tip Amount <br /><span>/ person</span></p>
+        <p id="tip-amount">$0.00</p>
+      </div>
+      
+      <div>
+        <p>Total <br /><span>/ person</span></p>
+        <p id="per-person-tip">$0.00</p>
+      </div>
+    
+      <button id="reset">Reset</button>
+  
+    </section>
+
+  </main>
+  
+
+  <script type="module" src="./index.js"></script>
+</body>
+</html>
