@@ -28,8 +28,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [GitHub Repo](https://github.com/mauricevalerio/frontendmentor-challenges/tree/main/tip-calculator)
+- Live Site URL: [Tip Calculator](https://mauricevalerio.github.io/frontendmentor-challenges/tip-calculator/)
 
 ## My process
 
