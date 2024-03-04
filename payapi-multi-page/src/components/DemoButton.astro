@@ -1,0 +1,11 @@
+---
+type Props = {
+  customClass?: string;
+};
+
+const { customClass } = Astro.props;
+
+const btnClassList = `${customClass} transition-all hover:opacity-75 rounded-full text-pr-water-white bg-pr-dark-pink py-3 px-4`;
+---
+
+<button class={btnClassList}>Schedule a Demo</button>

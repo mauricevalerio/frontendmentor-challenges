@@ -1,0 +1,20 @@
+---
+import { Image } from "astro:assets";
+import BgPatternCircle from "@/svg/shared/bg-pattern-circle.svg";
+
+type Props = {
+  bgColor: string;
+  position: string;
+};
+
+const { bgColor, position } = Astro.props;
+---
+
+<section class=`relative overflow-hidden ${bgColor}`>
+  <div class=`absolute ${position}`>
+    <Image loading={"eager"} src={BgPatternCircle} alt="Pattern Circle" />
+  </div>
+  <div class="relative z-10">
+    <slot />
+  </div>
+</section>

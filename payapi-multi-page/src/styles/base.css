@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h4,
+a,
+p,
+span,
+button {
+    font-family: 'Public Sans';
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'DM Serif Display';
+}

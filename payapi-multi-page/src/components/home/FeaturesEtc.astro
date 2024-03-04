@@ -1,0 +1,49 @@
+---
+import Icon from "@/components/Icon.astro";
+
+const featureEtc: {
+  iconSubFolder: string;
+  iconName: string;
+  header: string;
+  content: string;
+}[] = [
+  {
+    iconSubFolder: "home",
+    iconName: "icon-personal-finances",
+    header: "Personal Finances",
+    content: `Consolidate financial data from multiple sources and categorize
+      transactions up to 2 years of history. Analyze reports to reconcile
+      activities in your account.`,
+  },
+  {
+    iconSubFolder: "home",
+    iconName: "icon-banking-and-coverage",
+    header: "Banking & Coverage",
+    content: `With our platform, you can speed up account onboarding and support
+      ongoing payments for checking, savings, credit card, and brokerage
+      accounts.`,
+  },
+  {
+    iconSubFolder: "home",
+    iconName: "icon-consumer-payments",
+    header: "Consumer Payments",
+    content: `It's easier to set up secure bank payments with us through a flow
+      designed with the user experience in mind. Customers could instantly
+      authenticate their account.`,
+  },
+];
+---
+
+<div class="flex gap-8 mt-4">
+  {
+    featureEtc.map((item) => (
+      <div class=" text-center">
+        <div class="rounded-full p-2 bg-sec-sanjuan-blue inline-block">
+          <Icon subfolder={item.iconSubFolder} icon={item.iconName} />
+        </div>
+        <h4 class="font-bold my-4">{item.header}</h4>
+        <p>{item.content}</p>
+      </div>
+    ))
+  }
+</div>
