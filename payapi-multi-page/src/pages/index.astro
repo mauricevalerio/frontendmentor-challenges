@@ -2,9 +2,6 @@
 import Layout from "@/layouts/Layout.astro";
 import BgCircle from "@/layouts/BgCircle.astro";
 import Padding from "@/layouts/Padding.astro";
-import Header from "@/components/Header.astro";
-import ReadyToStart from "@/components/ReadyToStart.astro";
-import Footer from "@/components/Footer.astro";
 import Hero from "@/components/home/Hero.astro";
 import Customers from "@/components/home/Customers.astro";
 import Features from "@/components/home/Features.astro";
@@ -12,33 +9,18 @@ import Features from "@/components/home/Features.astro";
 // FeaturesEtc uses Icon component
 ---
 
-<Layout title="PayAPI - Home Page">
-  <BgCircle bgColor="bg-pr-water-white" position="-top-[15%] -right-[10%]">
+<Layout title="PayAPI Home" bgCirclePosition="-top-[15%] -right-[10%]">
+  <Hero slot="header-overlap" />
+
+  <BgCircle bgColor="bg-sec-mirage-blue" position="-top-[100%] -left-[20%]">
     <Padding>
-      <Header />
+      <Customers />
     </Padding>
-    <Hero />
+  </BgCircle>
+
+  <BgCircle bgColor="bg-pr-water-white" position="top-[25%] -right-[25%]">
+    <Padding>
+      <Features />
+    </Padding>
   </BgCircle>
 </Layout>
-
-<BgCircle bgColor="bg-sec-mirage-blue" position="-top-[100%] -left-[20%]">
-  <Padding>
-    <Customers />
-  </Padding>
-</BgCircle>
-
-<BgCircle bgColor="bg-pr-water-white" position="top-[25%] -right-[25%]">
-  <Padding>
-    <Features />
-  </Padding>
-</BgCircle>
-
-<Padding>
-  <ReadyToStart />
-</Padding>
-
-<BgCircle bgColor="bg-sec-mirage-blue" position="-top-[100%] -right-[20%]">
-  <Padding>
-    <Footer />
-  </Padding>
-</BgCircle>
