@@ -44,15 +44,10 @@ const { title, bgCirclePosition } = Astro.props;
       <ReadyToStart />
     </Padding>
 
-    <div class="mt-auto">
-      <BgCircle
-        bgColor="bg-sec-mirage-blue"
-        position="-top-[100%] -right-[20%]"
-      >
-        <Padding>
-          <Footer />
-        </Padding>
-      </BgCircle>
-    </div>
+    <BgCircle bgColor="bg-sec-mirage-blue" position="-top-[100%] -right-[20%]">
+      <Padding>
+        <Footer />
+      </Padding>
+    </BgCircle>
   </body>
 </html>
