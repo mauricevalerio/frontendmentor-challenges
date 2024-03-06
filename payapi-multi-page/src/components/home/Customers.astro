@@ -1,17 +1,19 @@
 ---
 import CustomerIcons from "@/components/CustomerIcons.astro";
 import TransparentButton from "@/components/TransparentButton.astro";
+
+type Props = {
+  customerHeader: string;
+  customerIntro: string;
+};
+
+const { customerHeader, customerIntro } = Astro.props;
 ---
 
 <section class="flex justify-between items-center py-20">
   <div class="max-w-[40%] text-pr-water-white">
-    <h2 class="text-5xl">Who we work with</h2>
-    <p class="mt-8 mb-4 text-justify opacity-85">
-      Today, millions of people around the world have successfully connected
-      their accounts to apps they love using our API. We provide developers with
-      the tools they need to create easy and accessible experiences for their
-      users.
-    </p>
+    <h2 class="text-5xl">{customerHeader}</h2>
+    <p class="mt-8 mb-4 text-justify opacity-85">{customerIntro}</p>
     <TransparentButton
       customClasses="border-pr-water-white hover:bg-pr-water-white hover:text-sec-mirage-blue"
       text="About Us"

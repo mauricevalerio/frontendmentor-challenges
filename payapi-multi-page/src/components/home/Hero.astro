@@ -1,14 +1,24 @@
 ---
 import { Image } from "astro:assets";
 import DemoForm from "@/components/DemoForm.astro";
-import PhoneMockUp from "@/svg/home/illustration-phone-mockup.svg";
+
+type Props = {
+  heroHeader: string;
+  heroImgPath: {
+    src: string;
+    width: number;
+    height: number;
+    format: "png" | "jpg" | "jpeg" | "tiff" | "webp" | "gif" | "svg" | "avif";
+  };
+  heroImgAlt: string;
+};
+
+const { heroHeader, heroImgPath, heroImgAlt } = Astro.props;
 ---
 
 <section class="flex justify-center items-center">
   <div class="flex-[0.5] mx-auto">
-    <h1 class="text-7xl text-sec-sanjuan-blue mb-4">
-      Start building with our APIs for absolutely free.
-    </h1>
+    <h1 class="text-7xl text-sec-sanjuan-blue mb-4">{heroHeader}</h1>
     <DemoForm />
     <p class="ml-4 mt-4 text-sec-lightsanjuan-blue">
       Have any questions? <a
@@ -18,10 +28,6 @@ import PhoneMockUp from "@/svg/home/illustration-phone-mockup.svg";
     </p>
   </div>
   <div class="mx-auto">
-    <Image
-      loading={"eager"}
-      src={PhoneMockUp}
-      alt="Illustration Phone Mockup"
-    />
+    <Image loading={"eager"} src={heroImgPath} alt={heroImgAlt} />
   </div>
 </section>

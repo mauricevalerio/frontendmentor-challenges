@@ -1,6 +1,17 @@
 import { defineCollection, z } from "astro:content";
 
-const featuresFooterCollection = defineCollection({
+const homeCollection = defineCollection({
+    type: "content",
+    schema: ({ image }) => z.object({
+        heroHeader: z.string(),
+        heroImgPath: image(),
+        heroImgAlt: z.string(),
+        customerHeader: z.string(),
+        customerIntro: z.string()
+    })
+})
+
+const featuresMainCollection = defineCollection({
     type: "content",
     schema: ({ image }) => z.object({
         imgPath: image(),
@@ -10,7 +21,7 @@ const featuresFooterCollection = defineCollection({
     })
 })
 
-const featuresMainCollection = defineCollection({
+const featuresFooterCollection = defineCollection({
     type: "content",
     schema: ({ image }) => z.object({
         imgPath: image(),
@@ -57,6 +68,7 @@ const aboutCollection = defineCollection({
 })
 
 export const collections = {
+    home: homeCollection,
     featuresMain: featuresMainCollection,
     featuresFooter: featuresFooterCollection,
     pricing: pricingCollection,
