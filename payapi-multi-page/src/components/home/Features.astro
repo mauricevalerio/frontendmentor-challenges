@@ -1,42 +1,9 @@
 ---
-import IllustrationImplement from "@/svg/home/illustration-easy-to-implement.svg";
-import IllustrationUi from "@/svg/home/illustration-simple-ui.svg";
-import FeaturesEtc from "@/components/home/FeaturesEtc.astro";
-import { Image } from "astro:assets";
+import FeaturesMain from "@/components/home/FeaturesMain.astro";
+import FeaturesFooter from "@/components/home/FeaturesFooter.astro";
 ---
 
 <section class="text-sec-sanjuan-blue">
-  <div class="flex items-center">
-    <Image
-      src={IllustrationImplement}
-      loading={"eager"}
-      alt="Illustration easy to implement"
-    />
-    <div>
-      <h3 class="text-5xl mb-4">Easy to implement</h3>
-      <p class="opacity-85 max-w-[85%]">
-        Our API comes with just a few lines of code. You'll be up and running in
-        no time. We built our documentation page to integrate payments
-        functionality with ease.
-      </p>
-    </div>
-  </div>
-
-  <div class="flex items-center">
-    <Image
-      src={IllustrationUi}
-      loading={"eager"}
-      alt="Illustration simple UI"
-      class="order-2"
-    />
-    <div class="order-1">
-      <h3 class="text-5xl mb-4">Simple UI & UX</h3>
-      <p class="opacity-85 max-w-[85%]">
-        Our pre-built form is easy to integrate in your app or website's
-        checkout flow and designed to optimize conversion.
-      </p>
-    </div>
-  </div>
-
-  <FeaturesEtc />
+  <FeaturesMain />
+  <FeaturesFooter />
 </section>

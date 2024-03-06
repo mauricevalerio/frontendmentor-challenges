@@ -1,0 +1,23 @@
+---
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+const featuresFooterCollection = await getCollection("featuresFooter");
+---
+
+<div class="flex gap-8 mt-4">
+  {
+    featuresFooterCollection.map((featureFooterItem) => (
+      <div class=" text-center">
+        <div class="rounded-full p-2 bg-sec-sanjuan-blue inline-block">
+          <Image
+            loading={"lazy"}
+            src={featureFooterItem.data.imgPath}
+            alt={featureFooterItem.data.imgAlt}
+          />
+        </div>
+        <h4 class="font-bold my-4">{featureFooterItem.data.header}</h4>
+        <p>{featureFooterItem.data.content}</p>
+      </div>
+    ))
+  }
+</div>
