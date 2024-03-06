@@ -20,7 +20,21 @@ const featuresMainCollection = defineCollection({
     })
 })
 
+const pricingPlanCollection = defineCollection({
+    type: "content",
+    schema: z.object({
+        type: z.string(),
+        description: z.string(),
+        price: z.number(),
+        features: z.array(z.object({
+            featureName: z.string(),
+            isIncluded: z.boolean()
+        }))
+    })
+})
+
 export const collections = {
     featuresMain: featuresMainCollection,
-    featuresFooter: featuresFooterCollection
+    featuresFooter: featuresFooterCollection,
+    pricingPlan: pricingPlanCollection
 }

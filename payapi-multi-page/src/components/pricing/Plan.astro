@@ -1,28 +1,14 @@
 ---
 import Padding from "@/layouts/Padding.astro";
+import { getCollection } from "astro:content";
+import PlanItem from "@/components/pricing/PlanItem.astro";
+
+const pricingPlanCollection = await getCollection("pricingPlan");
 ---
 
 <Padding>
-  <h1>Pricing</h1>
-  <h3>Free Plan</h3>
-  <p>
-    Build and test using our core set of products with up to 100 API requests
-  </p>
-  <h2>$0.00</h2>
-  <ul>
-    <li>Transactions</li>
-    <li>Auth</li>
-    <li>Identity</li>
-    <li>Investments</li>
-    <li>Assets</li>
-    <li>Liabilities</li>
-    <li>Income</li>
-  </ul>
-  <button>Request Access</button>
-
-  Basic Plan Launch your project with unlimited requests and no contractual
-  minimums $249.00 Transactions Auth Identity Investments Assets Liabilities
-  Income Request Access Premium Plan Get tailored solutions, volume pricing, and
-  dedicated support for your team $499.00 Transactions Auth Identity Investments
-  Assets Liabilities Income Request Access
+  <h1 class="text-6xl text-sec-sanjuan-blue mb-6">Pricing</h1>
+  <section class="flex gap-6">
+    {pricingPlanCollection.map((planItem) => <PlanItem planItem={planItem} />)}
+  </section>
 </Padding>
