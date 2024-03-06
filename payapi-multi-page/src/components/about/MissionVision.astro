@@ -1,0 +1,24 @@
+---
+import Padding from "@/layouts/Padding.astro";
+import AboutGridLayout from "@/layouts/AboutGridLayout.astro";
+
+type Props = {
+  header: string;
+  gridContentUpper: {
+    header: string;
+    description: string;
+  }[];
+};
+
+const { header, gridContentUpper } = Astro.props;
+---
+
+<Padding>
+  <section class="pl-20">
+    <h1 class="text-6xl text-sec-sanjuan-blue max-w-[70%]">
+      {header}
+    </h1>
+
+    <AboutGridLayout gridContent={gridContentUpper} />
+  </section>
+</Padding>

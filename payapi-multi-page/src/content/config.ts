@@ -33,8 +33,32 @@ const pricingPlanCollection = defineCollection({
     })
 })
 
+const aboutCollection = defineCollection({
+    type: "content",
+    schema: ({ image }) => z.object({
+        header: z.string(),
+        gridContentUpper: z.array(z.object({
+            header: z.string(),
+            description: z.string()
+        })),
+        desktopImgPath: image(),
+        tabletImgPath: image(),
+        mobileImgPath: image(),
+        imgAlt: z.string(),
+        companyMetrics: z.array(z.object({
+            description: z.string(),
+            metric: z.string()
+        })),
+        gridContentLower: z.array(z.object({
+            header: z.string(),
+            description: z.string()
+        }))
+    })
+})
+
 export const collections = {
     featuresMain: featuresMainCollection,
     featuresFooter: featuresFooterCollection,
-    pricingPlan: pricingPlanCollection
+    pricingPlan: pricingPlanCollection,
+    about: aboutCollection
 }

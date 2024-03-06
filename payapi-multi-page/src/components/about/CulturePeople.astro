@@ -1,0 +1,67 @@
+---
+import { Image } from "astro:assets";
+import Padding from "@/layouts/Padding.astro";
+import AboutGridLayout from "@/layouts/AboutGridLayout.astro";
+
+type Props = {
+  desktopImgPath: {
+    src: string;
+    width: number;
+    height: number;
+    format: "png" | "jpg" | "jpeg" | "tiff" | "webp" | "gif" | "svg" | "avif";
+  };
+  tabletImgPath: {
+    src: string;
+    width: number;
+    height: number;
+    format: "png" | "jpg" | "jpeg" | "tiff" | "webp" | "gif" | "svg" | "avif";
+  };
+  mobileImgPath: {
+    src: string;
+    width: number;
+    height: number;
+    format: "png" | "jpg" | "jpeg" | "tiff" | "webp" | "gif" | "svg" | "avif";
+  };
+  imgAlt: string;
+  companyMetrics: {
+    description: string;
+    metric: string;
+  }[];
+  gridContentLower: {
+    header: string;
+    description: string;
+  }[];
+};
+
+const {
+  desktopImgPath,
+  tabletImgPath,
+  mobileImgPath,
+  imgAlt,
+  companyMetrics,
+  gridContentLower,
+} = Astro.props;
+---
+
+<section class="pt-20">
+  <Image
+    src={desktopImgPath}
+    loading={"eager"}
+    alt={imgAlt}
+    class="w-full max-h-[450px] mb-8"
+  />
+
+  <Padding>
+    <div class="flex mb-16">
+      {
+        companyMetrics.map((metricItem) => (
+          <div class="flex-1">
+            <p class="mb-4 text-sec-sanjuan-blue">{metricItem.description}</p>
+            <h2 class="text-5xl text-pr-dark-pink">{metricItem.metric}</h2>
+          </div>
+        ))
+      }
+    </div>
+    <AboutGridLayout gridContent={gridContentLower} />
+  </Padding>
+</section>
