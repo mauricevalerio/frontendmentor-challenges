@@ -10,5 +10,5 @@ const { customClasses, text, link } = Astro.props;
 
 <a
   class=`${customClasses ? customClasses : ""} inline-block border-solid border-2 px-8 py-3 rounded-full transition-all hover:font-semibold`
-  href={`/${link}`}>{text}</a
+  href={`/${link ? link : ""}`}>{text}</a
 >
