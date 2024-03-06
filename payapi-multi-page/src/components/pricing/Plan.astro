@@ -3,12 +3,12 @@ import Padding from "@/layouts/Padding.astro";
 import { getCollection } from "astro:content";
 import PlanItem from "@/components/pricing/PlanItem.astro";
 
-const pricingPlanCollection = await getCollection("pricing");
+const pricingCollection = await getCollection("pricing");
 ---
 
 <Padding>
   <h1 class="text-6xl text-sec-sanjuan-blue mb-6">Pricing</h1>
   <section class="flex gap-6">
-    {pricingPlanCollection.map((planItem) => <PlanItem planItem={planItem} />)}
+    {pricingCollection.map((planItem) => <PlanItem planItem={planItem} />)}
   </section>
 </Padding>
