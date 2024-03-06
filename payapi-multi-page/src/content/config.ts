@@ -20,7 +20,7 @@ const featuresMainCollection = defineCollection({
     })
 })
 
-const pricingPlanCollection = defineCollection({
+const pricingCollection = defineCollection({
     type: "content",
     schema: z.object({
         type: z.string(),
@@ -59,6 +59,6 @@ const aboutCollection = defineCollection({
 export const collections = {
     featuresMain: featuresMainCollection,
     featuresFooter: featuresFooterCollection,
-    pricingPlan: pricingPlanCollection,
+    pricing: pricingCollection,
     about: aboutCollection
 }
