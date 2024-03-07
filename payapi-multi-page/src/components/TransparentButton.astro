@@ -1,14 +1,14 @@
 ---
 type Props = {
+  Element: "button" | "a";
   customClasses: string;
-  text: string;
-  link?: string;
+  href?: string;
 };
 
-const { customClasses, text, link } = Astro.props;
+const { Element, customClasses, href } = Astro.props;
 ---
 
-<a
+<Element
   class=`${customClasses ? customClasses : ""} inline-block border-solid border-2 px-8 py-3 rounded-full transition-all hover:font-semibold`
-  href={`/${link ? link : ""}`}>{text}</a
+  href={href}><slot /></Element
 >

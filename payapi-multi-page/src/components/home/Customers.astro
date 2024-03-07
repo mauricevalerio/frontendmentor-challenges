@@ -15,10 +15,10 @@ const { customerHeader, customerIntro } = Astro.props;
     <h2 class="text-5xl">{customerHeader}</h2>
     <p class="mt-8 mb-4 text-justify opacity-85">{customerIntro}</p>
     <TransparentButton
+      Element="a"
       customClasses="border-pr-water-white hover:bg-pr-water-white hover:text-sec-mirage-blue"
-      text="About Us"
-      link="about"
-    />
+      href="/about">About Us</TransparentButton
+    >
   </div>
   <CustomerIcons svgClass="fill-pr-water-white" />
 </section>
