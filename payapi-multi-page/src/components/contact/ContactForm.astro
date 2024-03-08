@@ -1,38 +1,16 @@
 ---
 import Padding from "@/layouts/Padding.astro";
 import CustomerIcons from "@/components/CustomerIcons.astro";
+import ContactFormValidation from "@/components/contact/ContactFormValidation";
+import TransparentButton from "@/components/TransparentButton.astro";
 import IconCheck from "@/svg/shared/checkbox.svg";
 import { Image } from "astro:assets";
-import TransparentButton from "@/components/TransparentButton.astro";
 ---
 
 <Padding>
   <div class="flex gap-40 items-center">
-    <form class="flex flex-col gap-6">
-      <input
-        type="text"
-        placeholder="Name"
-        class="cursor-pointer pl-4 pb-4 border-b-[1px] border-b-sec-lightsanjuan-blue outline-none"
-      />
-      <input
-        type="email"
-        placeholder="Email Address"
-        class="cursor-pointer pl-4 pb-4 border-b-[1px] border-b-sec-lightsanjuan-blue outline-none"
-      />
-      <input
-        type="text"
-        placeholder="Company Name"
-        class="cursor-pointer pl-4 pb-4 border-b-[1px] border-b-sec-lightsanjuan-blue outline-none"
-      />
-      <input
-        type="text"
-        placeholder="Title"
-        class="cursor-pointer pl-4 pb-4 border-b-[1px] border-b-sec-lightsanjuan-blue outline-none"
-      />
-      <textarea
-        placeholder="Message"
-        class="resize-none cursor-pointer pl-4 pb-4 border-b-[1px] border-b-sec-lightsanjuan-blue outline-none"
-      ></textarea>
+    <form id="contact-form" class="flex flex-col gap-6" novalidate>
+      <ContactFormValidation client:load />
       <div class="flex items-center gap-6">
         <input
           type="checkbox"
@@ -50,14 +28,12 @@ import TransparentButton from "@/components/TransparentButton.astro";
           class="absolute hidden peer-checked:block pointer-events-none"
         />
       </div>
-
       <TransparentButton
         Element="button"
         customClasses="w-fit font-semibold border-sec-sanjuan-blue hover:bg-sec-sanjuan-blue hover:text-pr-water-white"
         >Submit</TransparentButton
       >
     </form>
-
     <div>
       <h3 class="text-sec-sanjuan-blue text-3xl mb-10 max-w-[70%]">
         Join the thousands of innovators already building with us

@@ -8,7 +8,8 @@ export default {
 			'sec-sanjuan-blue': '#36536b',
 			'sec-mirage-blue': '#1b262f',
 			'sec-charm-pink': '#da6d97',
-			'sec-lightsanjuan-blue': '#6c8294'
+			'sec-lightsanjuan-blue': '#6c8294',
+			'form-error': '#ff0000'
 		},
 		fontFamily: {
 			serifDisplay: ['DM Serif Display'],

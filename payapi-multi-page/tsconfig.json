@@ -1,7 +1,7 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "baseUrl": "./src",
+    "baseUrl": "C:/Users/mauri/Documents/GitHub/frontendmentor-challenges/payapi-multi-page/src",
     "paths": {
       "@/components/*": [
         "./components/*"
@@ -11,7 +11,15 @@
       ],
       "@/svg/*": [
         "./svg/*"
+      ],
+      "@/utils/*": [
+        "./utils/*"
+      ],
+      "@/types/*": [
+        "./types/*"
       ]
-    }
+    },
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
   }
 }
