@@ -40,7 +40,7 @@ export default function ContactFormValidation() {
         [name]: {
           ...prevFormData[name as keyof formDataTypes],
           text: value,
-          errorMessage: validateInput(value, prevFormData[name as keyof formDataTypes].validators)
+          errorMessage: validateInput(name, value, prevFormData[name as keyof formDataTypes].validators)
         }
       }
     })

@@ -1,6 +1,6 @@
 import type { validatorFieldTypes } from '@/types/index.ts';
 
-export const validateInput = (value: string, validators: validatorFieldTypes): string => {
+export const validateInput = (name: string, value: string, validators: validatorFieldTypes): string => {
     for (let key in validators) {
         switch (key) {
             case 'pattern':
@@ -10,8 +10,10 @@ export const validateInput = (value: string, validators: validatorFieldTypes): s
                 }
                 break;
             case 'required':
+                const result = name.replace(/([A-Z])/g, " $1");
+                const finalResult = result.charAt(0).toUpperCase() + result.slice(1);
                 if (value.length === 0 && validators[key]) {
-                    return `field is required`;
+                    return `${finalResult} is required`;
                 }
                 break;
 
