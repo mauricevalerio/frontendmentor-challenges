@@ -3,11 +3,11 @@ import { Image } from "astro:assets";
 import BgPatternCircle from "@/svg/shared/bg-pattern-circle.svg";
 
 type Props = {
-  bgColor: string;
+  bgColor?: string;
   position: string;
 };
 
-const { bgColor, position } = Astro.props;
+const { bgColor = "bg-pr-water-white", position } = Astro.props;
 ---
 
 <section class=`relative overflow-hidden ${bgColor}`>

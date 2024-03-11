@@ -34,22 +34,15 @@ const { title, bgCirclePosition } = Astro.props;
     />
   </head>
   <body class="bg-pr-water-white min-h-screen">
-    <BgCircle bgColor="bg-pr-water-white" position={bgCirclePosition}>
+    <BgCircle position={bgCirclePosition}>
       <Padding>
         <Header />
+        <slot name="header-overlap" />
       </Padding>
-      <slot name="header-overlap" />
     </BgCircle>
     <slot />
 
-    <Padding>
-      <ReadyToStart />
-    </Padding>
-
-    <BgCircle bgColor="bg-sec-mirage-blue" position="-top-[100%] -right-[20%]">
-      <Padding>
-        <Footer />
-      </Padding>
-    </BgCircle>
+    <ReadyToStart />
+    <Footer />
   </body>
 </html>
