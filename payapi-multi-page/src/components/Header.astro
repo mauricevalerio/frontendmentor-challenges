@@ -2,15 +2,44 @@
 import MenuLayout from "@/layouts/MenuLayout.astro";
 import DemoButton from "@/components/DemoButton.astro";
 import Padding from "@/layouts/Padding.astro";
+import MenuHamburger from "@/svg/shared/menu.svg";
+import { Image } from "astro:assets";
 ---
 
 <Padding>
-  <header class="py-12">
+  <header class="py-12 max-sm:flex max-sm:items-center relative">
     <MenuLayout
+      displayClassList="max-sm:hidden"
       svgClassList="fill-sec-sanjuan-blue"
       ulClassList="text-sec-sanjuan-blue"
     >
       <DemoButton customClass="ml-auto" />
     </MenuLayout>
+    <Image
+      src={MenuHamburger}
+      id="hamburger-btn"
+      alt="Hamburger Menu Image"
+      class="hidden max-sm:inline-block"
+    />
+    <!-- <aside
+      id="mobile-menu"
+      class="absolute right-0 hidden bg-sec-mirage-blue min-h-screen trnal translate-x-0"
+    >
+      <nav>Test1</nav>
+      <nav>Test1</nav>
+      <nav>Test1</nav>
+    </aside> -->
   </header>
 </Padding>
+
+<!-- <script>
+  const hamburgerButton = document.getElementById(
+    "hamburger-btn",
+  ) as HTMLElement;
+  const mobileMenu = document.getElementById("mobile-menu") as HTMLElement;
+
+  hamburgerButton.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+    mobileMenu.classList.toggle("translate-x-full");
+  });
+</script> -->
