@@ -13,7 +13,10 @@ const { heroHeader, heroImgPath, heroImgAlt, customerHeader, customerIntro } =
   homeCollection[0].data;
 ---
 
-<Layout title="PayAPI Home" bgCirclePosition="-top-[15%] -right-[10%]">
+<Layout
+  title="PayAPI Home"
+  bgCirclePosition="-top-[15%] -right-[10%] max-md:-top-[25%] max-md:-right-[0]"
+>
   <Hero
     slot="header-overlap"
     heroHeader={heroHeader}
@@ -30,7 +33,7 @@ const { heroHeader, heroImgPath, heroImgAlt, customerHeader, customerIntro } =
     </Padding>
   </BgCircle>
 
-  <BgCircle bgColor="bg-pr-water-white" position="top-[25%] -right-[25%]">
+  <BgCircle position="top-[25%] -right-[25%]">
     <Padding>
       <Features />
     </Padding>

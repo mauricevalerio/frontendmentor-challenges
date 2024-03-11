@@ -1,13 +1,16 @@
 ---
 import MenuLayout from "@/layouts/MenuLayout.astro";
 import DemoButton from "@/components/DemoButton.astro";
+import Padding from "@/layouts/Padding.astro";
 ---
 
-<header class="py-12">
-  <MenuLayout
-    svgClassList="fill-sec-sanjuan-blue"
-    ulClassList="text-sec-sanjuan-blue"
-  >
-    <DemoButton customClass="ml-auto" />
-  </MenuLayout>
-</header>
+<Padding>
+  <header class="py-12">
+    <MenuLayout
+      svgClassList="fill-sec-sanjuan-blue"
+      ulClassList="text-sec-sanjuan-blue"
+    >
+      <DemoButton customClass="ml-auto" />
+    </MenuLayout>
+  </header>
+</Padding>

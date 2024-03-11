@@ -2,9 +2,14 @@
 import DemoButton from "@/components/DemoButton.astro";
 ---
 
-<form class="flex max-w-[80%] rounded-full shadow-xl">
+<form
+  class="flex max-w-[80%] rounded-full shadow-xl
+  max-lg:justify-center max-lg:mx-auto
+  max-sm:flex-col max-sm:shadow-none"
+>
   <input
-    class="text-sec-sanjuan-blue flex-1 font-semibold outline-none cursor-pointer rounded-full py-3 px-4"
+    class="text-sec-sanjuan-blue flex-1 font-semibold outline-none cursor-pointer rounded-full py-3 px-4
+    max-sm:shadow-xl max-sm:mb-4"
     type="email"
     placeholder="Enter email address"
     required

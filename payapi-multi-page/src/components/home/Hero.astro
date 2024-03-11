@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import DemoForm from "@/components/DemoForm.astro";
+import Padding from "@/layouts/Padding.astro";
 
 type Props = {
   heroHeader: string;
@@ -16,18 +17,24 @@ type Props = {
 const { heroHeader, heroImgPath, heroImgAlt } = Astro.props;
 ---
 
-<section class="flex justify-center items-center">
-  <div class="flex-[0.5] mx-auto">
-    <h1 class="text-7xl text-sec-sanjuan-blue mb-4">{heroHeader}</h1>
-    <DemoForm />
-    <p class="ml-4 mt-4 text-sec-lightsanjuan-blue">
-      Have any questions? <a
-        class="font-semibold hover:font-bold"
-        href="/contact">Contact Us</a
-      >
-    </p>
-  </div>
-  <div class="mx-auto">
-    <Image loading={"eager"} src={heroImgPath} alt={heroImgAlt} />
-  </div>
-</section>
+<Padding>
+  <section class="flex justify-center items-center max-lg:flex-col max-lg:mb-8">
+    <div
+      class="max-w-[45%] max-lg:order-2 max-lg:px-8 max-lg:text-center max-lg:max-w-[100%]"
+    >
+      <h1 class="text-7xl text-sec-sanjuan-blue mb-4 max-lg:text-6xl">
+        {heroHeader}
+      </h1>
+      <DemoForm />
+      <p class="ml-4 mt-4 text-sec-lightsanjuan-blue">
+        Have any questions? <a
+          class="font-semibold hover:font-bold"
+          href="/contact">Contact Us</a
+        >
+      </p>
+    </div>
+    <div class="mx-auto max-lg:order-1">
+      <Image loading={"eager"} src={heroImgPath} alt={heroImgAlt} />
+    </div>
+  </section>
+</Padding>
