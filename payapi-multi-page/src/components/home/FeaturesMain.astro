@@ -7,16 +7,18 @@ const featuresMainCollection = await getCollection("featuresMain");
 
 {
   featuresMainCollection.map((featuresMainItem, index) => (
-    <div class="flex items-center">
+    <div class="flex items-center justify-center max-lg:flex-col max-lg:text-center">
       <Image
         src={featuresMainItem.data.imgPath}
         loading={"eager"}
         alt={featuresMainItem.data.imgAlt}
-        class={(index + 1) % 2 === 0 ? "order-2" : ""}
+        class={(index + 1) % 2 === 0 ? "order-2 max-lg:order-1" : ""}
       />
-      <div class={(index + 1) % 2 === 0 ? "order-1" : ""}>
+      <div class={(index + 1) % 2 === 0 ? "order-1 max-lg:order-2" : ""}>
         <h3 class="text-5xl mb-4">{featuresMainItem.data.header}</h3>
-        <p class="opacity-85 max-w-[85%]">{featuresMainItem.data.content}</p>
+        <p class="opacity-85 max-w-[85%] max-lg:mx-auto">
+          {featuresMainItem.data.content}
+        </p>
       </div>
     </div>
   ))

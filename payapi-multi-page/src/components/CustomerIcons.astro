@@ -6,7 +6,10 @@ type Props = {
 const { svgClass } = Astro.props;
 ---
 
-<div class="grid grid-rows-2 grid-cols-3 gap-8 items-center justify-center">
+<div
+  class="grid grid-rows-2 grid-cols-3 gap-8 items-center justify-center
+max-md:grid-rows-3 max-md:grid-cols-2"
+>
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="131"

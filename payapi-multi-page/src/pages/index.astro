@@ -24,7 +24,10 @@ const { heroHeader, heroImgPath, heroImgAlt, customerHeader, customerIntro } =
     heroImgAlt={heroImgAlt}
   />
 
-  <BgCircle bgColor="bg-sec-mirage-blue" position="-top-[100%] -left-[20%]">
+  <BgCircle
+    bgColor="bg-sec-mirage-blue"
+    position="-top-[100%] -left-[20%] max-md:-top-[25%] max-md:-left-[0]"
+  >
     <Padding>
       <Customers
         customerHeader={customerHeader}
@@ -33,7 +36,7 @@ const { heroHeader, heroImgPath, heroImgAlt, customerHeader, customerIntro } =
     </Padding>
   </BgCircle>
 
-  <BgCircle position="top-[25%] -right-[25%]">
+  <BgCircle position="top-[25%] -right-[25%] max-md:hidden">
     <Padding>
       <Features />
     </Padding>

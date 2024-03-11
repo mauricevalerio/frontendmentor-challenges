@@ -10,9 +10,16 @@ type Props = {
 const { customerHeader, customerIntro } = Astro.props;
 ---
 
-<section class="flex justify-between items-center py-20">
-  <div class="max-w-[40%] text-pr-water-white">
-    <h2 class="text-5xl">{customerHeader}</h2>
+<section
+  class="flex justify-between items-center py-20
+  max-lg:flex-col max-lg:text-center max-lg:gap-8"
+>
+  <div
+    class="max-w-[40%] text-pr-water-white
+  max-lg:max-w-[65%] max-lg:order-2
+  max-md:max-w-[90%]"
+  >
+    <h2 class="text-5xl max-lg:text-4xl">{customerHeader}</h2>
     <p class="mt-8 mb-4 text-justify opacity-85">{customerIntro}</p>
     <TransparentButton
       Element="a"
@@ -20,5 +27,7 @@ const { customerHeader, customerIntro } = Astro.props;
       href="/about">About Us</TransparentButton
     >
   </div>
-  <CustomerIcons svgClass="fill-pr-water-white" />
+  <div class="max-lg:order-1">
+    <CustomerIcons svgClass="fill-pr-water-white" />
+  </div>
 </section>

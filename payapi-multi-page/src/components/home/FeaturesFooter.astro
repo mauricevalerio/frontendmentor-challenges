@@ -4,7 +4,7 @@ import { Image } from "astro:assets";
 const featuresFooterCollection = await getCollection("featuresFooter");
 ---
 
-<div class="flex gap-8 mt-4">
+<div class="flex gap-8 mt-4 max-md:flex-col">
   {
     featuresFooterCollection.map((featureFooterItem) => (
       <div class=" text-center">
