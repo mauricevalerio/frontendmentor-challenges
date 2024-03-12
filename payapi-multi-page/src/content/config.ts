@@ -52,9 +52,6 @@ const aboutCollection = defineCollection({
             header: z.string(),
             description: z.string()
         })),
-        desktopImgPath: image(),
-        tabletImgPath: image(),
-        mobileImgPath: image(),
         imgAlt: z.string(),
         companyMetrics: z.array(z.object({
             description: z.string(),

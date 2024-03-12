@@ -14,8 +14,11 @@ const { header, gridContentUpper } = Astro.props;
 ---
 
 <Padding>
-  <section class="pl-20">
-    <h1 class="text-6xl text-sec-sanjuan-blue max-w-[70%]">
+  <section class="pl-20 max-md:pl-0">
+    <h1
+      class=`text-6xl text-sec-sanjuan-blue max-w-[70%] 
+      max-md:max-w-full max-md:text-center max-md:text-5xl`
+    >
       {header}
     </h1>
 

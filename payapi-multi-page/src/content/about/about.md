@@ -5,9 +5,6 @@ gridContentUpper:
       description: "Our main goal is to build beautiful consumer experiences along with developer-friendly infrastructure. The result is an intelligent tool that gives everyone the ability to create amazing products that solve big problems. We are deeply focused on democratizing financial services through technology."
     - header: "Our Business"
       description: "At the core of our platform is the technical infrastructure APIs that connect consumers. Our innovative product provides key insights for businesses and individuals, as well as robust reporting for traditional financial institutions and developers."
-desktopImgPath: "./images/desktop-img-team-members.jpg"
-tabletImgPath: "./images/tablet-img-team-members.jpg"
-mobileImgPath: "./images/mobile-img-team-members.jpg"
 imgAlt: "About of Team Members"
 companyMetrics:
     - description: "Team Members"

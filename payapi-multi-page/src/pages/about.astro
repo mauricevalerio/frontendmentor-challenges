@@ -7,30 +7,25 @@ import { getCollection } from "astro:content";
 
 const aboutCollection = await getCollection("about");
 
-const {
-  header,
-  gridContentUpper,
-  desktopImgPath,
-  tabletImgPath,
-  mobileImgPath,
-  imgAlt,
-  companyMetrics,
-  gridContentLower,
-} = aboutCollection[0].data;
+const { header, gridContentUpper, imgAlt, companyMetrics, gridContentLower } =
+  aboutCollection[0].data;
 ---
 
-<Layout title="PayAPI About" bgCirclePosition="-top-[75%] -right-[10%]">
+<Layout
+  title="PayAPI About"
+  bgCirclePosition="-top-[75%] -right-[10%] max-md:-top-[50%] max-md:-right-[70%]"
+>
   <MissionVision
     slot="header-overlap"
     header={header}
     gridContentUpper={gridContentUpper}
   />
 
-  <BgCircle bgColor="bg-pr-water-white" position="-top-[5%] -left-[40%]">
+  <BgCircle
+    bgColor="bg-pr-water-white"
+    position="max-md:hidden -top-[5%] -left-[40%]"
+  >
     <CulturePeople
-      desktopImgPath={desktopImgPath}
-      tabletImgPath={tabletImgPath}
-      mobileImgPath={mobileImgPath}
       imgAlt={imgAlt}
       companyMetrics={companyMetrics}
       gridContentLower={gridContentLower}
