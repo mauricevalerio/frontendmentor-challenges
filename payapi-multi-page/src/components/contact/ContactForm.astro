@@ -8,18 +8,18 @@ import { Image } from "astro:assets";
 ---
 
 <Padding>
-  <div class="flex gap-40 items-center">
-    <form id="contact-form" class="flex flex-col gap-6" novalidate>
+  <div class="flex gap-40 items-center max-md:flex-col max-md:gap-20">
+    <form id="contact-form" class="flex flex-col gap-6 max-md:gap-2" novalidate>
       <ContactFormValidation client:load />
-      <div class="flex items-center gap-6">
+      <div class="flex items-center gap-6 mb-4">
         <input
           type="checkbox"
           id="subscribe-checkbox"
-          class="relative peer cursor-pointer appearance-none w-5 h-5 rounded-sm bg-sec-lightsanjuan-blue checked:bg-pr-dark-pink"
+          class="relative peer cursor-pointer appearance-none min-w-[20px] h-[20px] rounded-sm bg-sec-lightsanjuan-blue checked:bg-pr-dark-pink"
         />
         <label
           for="subscribe-checkbox"
-          class="cursor-pointer text-sec-sanjuan-blue max-w-[70%]"
+          class="cursor-pointer text-sec-sanjuan-blue max-w-[70%] max-md:max-w-full"
           >Stay up-to-date with company announcements and updates to our API</label
         >
         <Image
@@ -35,7 +35,9 @@ import { Image } from "astro:assets";
       >
     </form>
     <div>
-      <h3 class="text-sec-sanjuan-blue text-3xl mb-10 max-w-[70%]">
+      <h3
+        class="text-sec-sanjuan-blue text-3xl mb-10 max-w-[70%] max-md:max-w-full max-md:text-center"
+      >
         Join the thousands of innovators already building with us
       </h3>
       <CustomerIcons svgClass="fill-sec-sanjuan-blue" />
