@@ -29,7 +29,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [GitHub Repo](https://github.com/mauricevalerio/frontendmentor-challenges/tree/main/tip-calculator)
-- Live Site URL: [Tip Calculator](https://mauricevalerio.github.io/frontendmentor-challenges/tip-calculator/)
+- Live Site URL: [Tip Calculator](https://tipper-calc.vercel.app/)
 
 ## My process
 
