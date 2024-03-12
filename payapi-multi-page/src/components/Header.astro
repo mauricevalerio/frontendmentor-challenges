@@ -1,20 +1,18 @@
 ---
-import MenuLayout from "@/layouts/MenuLayout.astro";
 import DemoButton from "@/components/DemoButton.astro";
 import Padding from "@/layouts/Padding.astro";
+import Logo from "@/components/Logo.astro";
+import NavLinks from "@/components/NavLinks.astro";
 import MenuHamburger from "@/svg/shared/menu.svg";
 import { Image } from "astro:assets";
 ---
 
 <Padding>
-  <header class="py-12 max-sm:flex max-sm:items-center relative">
-    <MenuLayout
-      displayClassList="max-sm:hidden"
-      svgClassList="fill-sec-sanjuan-blue"
-      ulClassList="text-sec-sanjuan-blue"
-    >
-      <DemoButton customClass="ml-auto" />
-    </MenuLayout>
+  <header class="py-12 flex items-center">
+    <Logo svgFillColor={"fill-sec-sanjuan-blue"} />
+    <NavLinks ulClassList="text-sec-sanjuan-blue" />
+    <DemoButton customClass="ml-auto" />
+
     <Image
       src={MenuHamburger}
       id="hamburger-btn"

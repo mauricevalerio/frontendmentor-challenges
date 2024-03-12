@@ -1,0 +1,19 @@
+---
+type Props = {
+  ulClassList?: string;
+  liClassList?: string;
+};
+
+const { ulClassList, liClassList } = Astro.props;
+
+const ulCustomClass = `${ulClassList ? ulClassList : ""} flex max-sm:flex-col items-center gap-4 font-semibold`;
+const liItemCustomClass = `${liClassList ? liClassList : ""} hover:font-bold`;
+---
+
+<nav class="flex items-center gap-8 ml-8">
+  <ul class={ulCustomClass}>
+    <li><a class={liItemCustomClass} href="/pricing">Pricing</a></li>
+    <li><a class={liItemCustomClass} href="/about">About</a></li>
+    <li><a class={liItemCustomClass} href="/contact">Contact</a></li>
+  </ul>
+</nav>
