@@ -7,8 +7,10 @@ const pricingCollection = await getCollection("pricing");
 ---
 
 <Padding>
-  <h1 class="text-6xl text-sec-sanjuan-blue mb-6">Pricing</h1>
-  <section class="flex gap-6">
+  <h1 class="text-6xl text-sec-sanjuan-blue mb-6 max-md:text-center">
+    Pricing
+  </h1>
+  <section class="flex items-center gap-6 max-md:flex-col">
     {pricingCollection.map((planItem) => <PlanItem planItem={planItem} />)}
   </section>
 </Padding>

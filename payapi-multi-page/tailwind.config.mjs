@@ -15,6 +15,9 @@ export default {
 			serifDisplay: ['DM Serif Display'],
 			publicSans: ['Public Sans']
 		},
+		content: {
+			'link': 'url("/src/svg/shared/icon-check.svg")',
+		},
 		extend: {},
 	},
 	plugins: [],

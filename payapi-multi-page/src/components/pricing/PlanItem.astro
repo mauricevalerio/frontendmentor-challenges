@@ -11,36 +11,33 @@ type Props = {
 const { planItem } = Astro.props;
 ---
 
-<div class="max-w-[33%]">
-  <h3 class="text-3xl text-pr-dark-pink">{planItem.data.type}</h3>
-  <p class="text-sec-lightsanjuan-blue my-4">
-    {planItem.data.description}
-  </p>
-  <h2 class="text-5xl text-sec-sanjuan-blue">
-    ${planItem.data.price.toFixed(2)}
-  </h2>
+<div class="flex-1">
+  <div class="max-md:text-center">
+    <h3 class="text-3xl text-pr-dark-pink">{planItem.data.type}</h3>
+    <p class="text-sec-lightsanjuan-blue my-4">
+      {planItem.data.description}
+    </p>
+    <h2 class="text-5xl text-sec-sanjuan-blue">
+      ${planItem.data.price.toFixed(2)}
+    </h2>
+  </div>
   <ul class="my-4 py-4 border-y-2 border-solid border-sec-sanjuan-blue">
     {
       planItem.data.features.map((featureItem) => (
         <li
-          class={`mb-2 relative flex items-center text-sec-sanjuan-blue ${featureItem.isIncluded ? "opacity-100" : "opacity-80"}`}
+          class={`mb-2 text-sec-sanjuan-blue ${featureItem.isIncluded ? "opacity-100 before:content-link before:me-1" : "opacity-80 before:me-6"}
+          max-md:block max-md:w-[120px] max-md:mx-auto `}
         >
-          {featureItem.isIncluded && (
-            <Image
-              src={CheckIcon}
-              loading={"eager"}
-              alt="Checkmark Feature Inclusion Indicator"
-              class="absolute"
-            />
-          )}
-          <span class="ml-6">{featureItem.featureName}</span>
+          {featureItem.featureName}
         </li>
       ))
     }
   </ul>
-  <TransparentButton
-    Element="a"
-    customClasses="border-sec-sanjuan-blue hover:bg-sec-sanjuan-blue hover:text-pr-water-white"
-    href="/contact">Request Access</TransparentButton
-  >
+  <div class="max-md:text-center">
+    <TransparentButton
+      Element="a"
+      customClasses="border-sec-sanjuan-blue hover:bg-sec-sanjuan-blue hover:text-pr-water-white"
+      href="/contact">Request Access</TransparentButton
+    >
+  </div>
 </div>
