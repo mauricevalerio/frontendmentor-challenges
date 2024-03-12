@@ -1,7 +1,6 @@
 ---
 import "../styles/base.css";
 import BgCircle from "@/layouts/BgCircle.astro";
-
 import Header from "@/components/Header.astro";
 import ReadyToStart from "@/components/ReadyToStart.astro";
 import Footer from "@/components/Footer.astro";
@@ -38,9 +37,9 @@ const { title, bgCirclePosition } = Astro.props;
       <Header />
       <slot name="header-overlap" />
     </BgCircle>
-  </body>
-  <slot />
+    <slot />
 
-  <ReadyToStart />
-  <Footer />
+    <ReadyToStart />
+    <Footer />
+  </body>
 </html>

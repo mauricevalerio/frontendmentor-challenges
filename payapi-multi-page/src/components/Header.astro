@@ -3,41 +3,65 @@ import DemoButton from "@/components/DemoButton.astro";
 import Padding from "@/layouts/Padding.astro";
 import Logo from "@/components/Logo.astro";
 import NavLinks from "@/components/NavLinks.astro";
-import MenuHamburger from "@/svg/shared/menu.svg";
-import { Image } from "astro:assets";
 ---
 
 <Padding>
   <header class="py-12 flex items-center">
     <Logo svgFillColor={"fill-sec-sanjuan-blue"} />
-    <NavLinks ulClassList="text-sec-sanjuan-blue" />
-    <DemoButton customClass="ml-auto" />
-
-    <Image
-      src={MenuHamburger}
-      id="hamburger-btn"
-      alt="Hamburger Menu Image"
-      class="hidden max-sm:inline-block"
+    <NavLinks
+      navClassList="max-sm:hidden"
+      ulClassList="text-sec-sanjuan-blue"
     />
-    <!-- <aside
-      id="mobile-menu"
-      class="absolute right-0 hidden bg-sec-mirage-blue min-h-screen trnal translate-x-0"
+    <DemoButton customClass="ml-auto max-sm:hidden" />
+
+    <button
+      id="hamburger-btn"
+      class="hidden max-sm:fixed max-sm:right-[25px] max-sm:inline-block max-sm:ml-auto z-10"
     >
-      <nav>Test1</nav>
-      <nav>Test1</nav>
-      <nav>Test1</nav>
-    </aside> -->
+      <img
+        id="hamburger-image"
+        src="/mobile-menu-buttons/menu.svg"
+        alt="Hamburger Menu Image"
+      />
+    </button>
+
+    <aside
+      id="mobile-menu"
+      class=`sm:hidden fixed top-0 right-0 w-0 opacity-95 bg-sec-mirage-blue h-screen transition-all
+      flex overflow-hidden`
+    >
+      <div
+        class="pt-6 border-t-2 border-solid border-sec-lightsanjuan-blue flex-1 mt-32 flex flex-col gap-4"
+      >
+        <NavLinks
+          navClassList="justify-center"
+          liClassList="text-pr-water-white text-lg mb-4 inline-block"
+        />
+        <DemoButton customClass="text-lg" />
+      </div>
+    </aside>
   </header>
 </Padding>
 
-<!-- <script>
-  const hamburgerButton = document.getElementById(
-    "hamburger-btn",
-  ) as HTMLElement;
-  const mobileMenu = document.getElementById("mobile-menu") as HTMLElement;
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const hamburgerImage = document.getElementById(
+      "hamburger-image",
+    ) as HTMLElement;
+    const mobileMenu = document.getElementById("mobile-menu") as HTMLElement;
 
-  hamburgerButton.addEventListener("click", () => {
-    mobileMenu.classList.toggle("hidden");
-    mobileMenu.classList.toggle("translate-x-full");
+    const mobileMenuClasses = ["w-0", "w-3/4", "px-4"];
+
+    hamburgerImage.addEventListener("click", () => {
+      hamburgerImage.classList.toggle("open");
+      mobileMenuClasses.forEach(function (classItem) {
+        mobileMenu.classList.toggle(classItem);
+      });
+      if (hamburgerImage.classList.contains("open")) {
+        hamburgerImage.setAttribute("src", "/mobile-menu-buttons/close.svg");
+      } else {
+        hamburgerImage.setAttribute("src", "/mobile-menu-buttons/menu.svg");
+      }
+    });
   });
-</script> -->
+</script>

@@ -1,16 +1,18 @@
 ---
 type Props = {
+  navClassList?: string;
   ulClassList?: string;
   liClassList?: string;
 };
 
-const { ulClassList, liClassList } = Astro.props;
+const { navClassList, ulClassList, liClassList } = Astro.props;
 
+const navCustomClass = `${navClassList ? navClassList : ""}`;
 const ulCustomClass = `${ulClassList ? ulClassList : ""} flex max-sm:flex-col items-center gap-4 font-semibold`;
 const liItemCustomClass = `${liClassList ? liClassList : ""} hover:font-bold`;
 ---
 
-<nav class="flex items-center gap-8 ml-8">
+<nav class=`flex items-center gap-8 ml-8 max-sm:ml-0 ${navCustomClass}`>
   <ul class={ulCustomClass}>
     <li><a class={liItemCustomClass} href="/pricing">Pricing</a></li>
     <li><a class={liItemCustomClass} href="/about">About</a></li>
