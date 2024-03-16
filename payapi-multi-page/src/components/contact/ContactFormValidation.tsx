@@ -56,7 +56,7 @@ export default function ContactFormValidation() {
           onChange={validateFormData}
           onBlur={validateFormData}
           placeholder="Name"
-          className={`w-full cursor-pointer pl-4 pb-4 outline-none border-b-[1px] border-b-${formData.fullName.errorMessage === "" ? "sec-lightsanjuan-blue" : "form-error"}`}
+          className={`bg-pr-water-white w-full cursor-pointer pl-4 pb-4 outline-none border-b-[1px] border-b-${formData.fullName.errorMessage === "" ? "sec-lightsanjuan-blue" : "form-error"}`}
         />
         <span className='block h-2 mt-2 mb-4 text-xs text-form-error'>{formData.fullName.errorMessage}</span>
       </div>
@@ -69,7 +69,7 @@ export default function ContactFormValidation() {
           onChange={validateFormData}
           onBlur={validateFormData}
           placeholder="Email Address"
-          className={`w-full cursor-pointer pl-4 pb-4 outline-none border-b-[1px] border-b-${formData.email.errorMessage === "" ? "sec-lightsanjuan-blue" : "form-error"}`}
+          className={`bg-pr-water-white w-full cursor-pointer pl-4 pb-4 outline-none border-b-[1px] border-b-${formData.email.errorMessage === "" ? "sec-lightsanjuan-blue" : "form-error"}`}
         />
         <span className='block h-2 mt-2 mb-4 text-xs text-form-error'>{formData.email.errorMessage}</span>
       </div>
@@ -82,7 +82,7 @@ export default function ContactFormValidation() {
           onChange={validateFormData}
           onBlur={validateFormData}
           placeholder="Company Name"
-          className={`w-full cursor-pointer pl-4 pb-4 outline-none border-b-[1px] border-b-${formData.companyName.errorMessage === "" ? "sec-lightsanjuan-blue" : "form-error"}`}
+          className={`bg-pr-water-white w-full cursor-pointer pl-4 pb-4 outline-none border-b-[1px] border-b-${formData.companyName.errorMessage === "" ? "sec-lightsanjuan-blue" : "form-error"}`}
         />
         <span className='block h-2 mt-2 mb-4 text-xs text-form-error'>{formData.companyName.errorMessage}</span>
       </div>
@@ -95,7 +95,7 @@ export default function ContactFormValidation() {
           onChange={validateFormData}
           onBlur={validateFormData}
           placeholder="Title"
-          className={`w-full cursor-pointer pl-4 pb-4 outline-none border-b-[1px] border-b-${formData.messageTitle.errorMessage === "" ? "sec-lightsanjuan-blue" : "form-error"}`}
+          className={`bg-pr-water-white w-full cursor-pointer pl-4 pb-4 outline-none border-b-[1px] border-b-${formData.messageTitle.errorMessage === "" ? "sec-lightsanjuan-blue" : "form-error"}`}
         />
         <span className='block h-2 mt-2 mb-4 text-xs text-form-error'>{formData.messageTitle.errorMessage}</span>
       </div>
@@ -107,7 +107,7 @@ export default function ContactFormValidation() {
           onChange={validateFormData}
           onBlur={validateFormData}
           placeholder="Message"
-          className={`resize-none w-full cursor-pointer pl-4 pb-4 border-b-[1px] border-b-${formData.messageContent.errorMessage === "" ? "sec-lightsanjuan-blue" : "form-error"} outline-none`}
+          className={`resize-none bg-pr-water-white w-full cursor-pointer pl-4 pb-4 border-b-[1px] border-b-${formData.messageContent.errorMessage === "" ? "sec-lightsanjuan-blue" : "form-error"} outline-none`}
         />
         <span className='block h-2 mt-2 mb-4 text-xs text-form-error'>{formData.messageContent.errorMessage}</span>
       </div>
