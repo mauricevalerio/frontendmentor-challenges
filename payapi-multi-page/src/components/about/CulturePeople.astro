@@ -30,18 +30,13 @@ const { imgAlt, companyMetrics, gridContentLower } = Astro.props;
       media="(max-width: 820px)"
       type="image/jpg"
     />
-    <source
-      srcset="desktop-img-team-members.jpg"
-      media="(max-width: 2000px)"
-      type="image/jpg"
-    />
 
-    <img src="/desktop-img-team-members.jpg" alt={imgAlt} />
+    <img src="/desktop-img-team-members.jpg" alt={imgAlt} width="100%"/>
   </picture>
 
   <Padding>
     <div
-      class=`flex mb-16 
+      class=`flex mb-16 mt-16
       max-sm:flex-col max-sm:items-center max-sm:gap-4 max-sm:text-center
       max-sm:border-y-[1px] max-sm:border-solid max-sm:border-sec-mirage-blue
       max-sm:py-4`
