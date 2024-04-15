@@ -1,0 +1,188 @@
+@font-face {
+  font-family: "Mouse Memoirs";
+  src: url("fonts/MouseMemoirs-Regular.ttf");
+}
+
+:root {
+  --ff-primary: "Mouse Memoirs", sans-serif;
+
+  --clr-primary: #261676;
+  --clr-secondary: #2463FF;
+  --clr-white: #FFFFFF;
+  --clr-gray: #887DC0;
+
+  --fs-xl: 5.23rem;
+  --fs-lg: 3.39rem;
+  --fs-md: 1.85rem;
+  --fs-sm: 1.23rem;
+  --fs-base: 1rem;
+
+  --rounded-xs: .75rem;
+  --rounded-sm: 2.5rem;
+  --rounded-full: 50%;
+
+  --shadow-blue: inset 0px -2px 0px 3px var(--clr-primary), inset 0px 1px 0px 4px #FFFFFF99;
+  --shadow-pink: inset 0px -2px 0px 3px var(--clr-primary), inset 0px 1px 0px 4px #FE71FE;
+  --shadow-play: inset 0px -4px 0px 5px #243041, inset 0px -12px 0px 11px #9D2DF5;
+  --shadow-letters: 0px 4px 4px 0px var(--clr-primary);
+  --shadow-disabled: inset 0px -2px 0px 3px #140E66, inset 0px 1px 0px 6px #3C74FF;
+  --bg-pink: linear-gradient(0deg, rgba(36, 99, 255, 1) 0%, rgba(254, 113, 254, 1) 100%);
+}
+
+
+/****************************** RESET ******************************/
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  box-sizing: border-box;
+}
+
+
+html,
+body {
+  height: 100%;
+}
+
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  font-size: 26px;
+  /************************** Base Size ***************************/
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin-block-end: 0;
+}
+
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+body {
+  line-height: 1.5;
+  font-family: var(--ff-primary);
+}
+
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
+  line-height: 1.1;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+:target {
+  scroll-margin-block: 5ex;
+}
+
+/****************************** BUTTONS ******************************/
+
+.btn {
+  cursor: pointer;
+  text-transform: uppercase;
+  padding: .5em;
+  border: none;
+  color: var(--clr-white);
+}
+
+.btn:hover {
+  filter: brightness(120%);
+}
+
+button:disabled {
+  opacity: .5;
+}
+
+.btn-pink {
+  background: var(--bg-pink);
+  border-radius: var(--rounded-sm);
+}
+
+.btn-pink img,
+.heart {
+  width: 25px;
+  height: 25px;
+}
+
+.sections {
+  width: 100%;
+  max-width: 80%;
+}
+
+.component-headers {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.component-headers-text {
+  font-size: var(--fs-md);
+  background: -webkit-linear-gradient(0deg, rgba(103, 182, 255) 0%, rgba(103, 182, 255, 1) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px var(--clr-primary);
+}
+
+dialog .component-headers-text {
+  font-size: var(--fs-lg);
+}
+
+@media (min-width: 768px) {
+  .component-headers:not(.hangman .component-headers) {
+    justify-content: start;
+  }
+
+  .component-headers-text {
+    font-size: var(--fs-lg);
+    margin: 0 auto;
+    -webkit-text-stroke: 5px var(--clr-primary);
+  }
+}
