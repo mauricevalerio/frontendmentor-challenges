@@ -158,7 +158,7 @@ button:disabled {
 }
 
 .component-headers-text {
-  font-size: var(--fs-md);
+  font-size: var(--fs-sm);
   background: -webkit-linear-gradient(0deg, rgba(103, 182, 255) 0%, rgba(103, 182, 255, 1) 100%);
   background-clip: text;
   -webkit-background-clip: text;
@@ -166,11 +166,11 @@ button:disabled {
   -webkit-text-stroke: 1px var(--clr-primary);
 }
 
-dialog .component-headers-text {
-  font-size: var(--fs-lg);
-}
-
 @media (min-width: 768px) {
+  dialog .component-headers-text {
+    font-size: var(--fs-lg);
+  }
+
   .component-headers:not(.hangman .component-headers) {
     justify-content: start;
   }

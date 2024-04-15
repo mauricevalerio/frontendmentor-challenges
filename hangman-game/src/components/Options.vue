@@ -94,7 +94,7 @@ export default {
 
     .option-header {
         position: absolute;
-        top: -60px;
+        top: -10%;
         left: 50%;
         transform: translateX(-50%);
     }
@@ -125,5 +125,11 @@ export default {
     .btn-option-quit {
         background: var(--bg-pink);
         border-radius: var(--rounded-sm);
+    }
+
+    @media (min-width: 768px) {
+        .option-header {
+            top: -15%;
+        }
     }
 </style>
