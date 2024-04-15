@@ -94,7 +94,7 @@ export default {
 
     .option-header {
         position: absolute;
-        top: -10%;
+        top: -5%;
         left: 50%;
         transform: translateX(-50%);
     }
