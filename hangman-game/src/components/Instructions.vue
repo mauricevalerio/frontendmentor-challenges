@@ -103,6 +103,7 @@ export default {
     @media (min-width: 1024px) {
         .instruction-wrapper {
             display: flex;
+            justify-content: center;
             gap: 1rem;
         }
 
