@@ -33,8 +33,10 @@ export const transformAllCountriesData = async (): Promise<AllCountry[]> => {
 }
 
 const fetchCountry = async (countryName: string): Promise<Country> => {
-    const response = await fetch(`${baseUrl}${version}/name/${countryName}?fullText=true`)
+    const response = await fetch(`${baseUrl}${version}name/${countryName}?fullText=true`)
     const data = await response.json()
+
+    console.log(data)
 
     if (!response.ok)
         console.error("Error")
@@ -44,6 +46,7 @@ const fetchCountry = async (countryName: string): Promise<Country> => {
 
 export const transformCountryData = async (countryName: string): Promise<Country> => {
     const data = await fetchCountry(countryName)
+    console.log(data)
 
     return {
         flags: {
@@ -69,7 +72,7 @@ export const transformCountryData = async (countryName: string): Promise<Country
 }
 
 export const fetchCountryName = async (countryCode: string): Promise<string> => {
-    const response = await fetch(`${baseUrl}${version}/alpha/${countryCode}`)
+    const response = await fetch(`${baseUrl}${version}alpha/${countryCode}`)
     const data = await response.json()
 
     if (!response.ok)
