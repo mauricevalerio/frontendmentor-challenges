@@ -1,11 +1,8 @@
 import { Country, AllCountry } from '../interfaces/ICountry'
+import { BASE_URL, API_VERSION, ENDPOINT } from '../constants/index'
 
-const baseUrl = 'https://restcountries.com/'
-const version = 'v3.1/'
-const endPoint = 'all'
-
-const fetchAllCountries = async (): Promise<AllCountry[]> => {
-    const response = await fetch(`${baseUrl}${version}${endPoint}`)
+const fetchAllData = async (): Promise<AllCountry[]> => {
+    const response = await fetch(`${BASE_URL}${API_VERSION}${ENDPOINT}`)
     const data = await response.json()
 
     if (!response.ok)
@@ -14,29 +11,24 @@ const fetchAllCountries = async (): Promise<AllCountry[]> => {
     return data
 }
 
-export const transformAllCountriesData = async (): Promise<AllCountry[]> => {
-    const data = await fetchAllCountries()
+export const extractSummaryData = async (): Promise<AllCountry[]> => {
+    const data = await fetchAllData()
 
-    return data.map((country: AllCountry) => ({
-        flags: {
-            png: country.flags.png,
-            alt: country.flags.alt
-        },
-        name: {
-            common: country.name.common
-        },
-        population: country.population,
-        region: country.region,
-        capital: country.capital
-    }
-    ))
+    return data.map((country: AllCountry) => {
+        const { flags: { png, alt }, name: { common }, population, region, capital } = country
+        return {
+            flags: { png, alt },
+            name: { common },
+            population,
+            region,
+            capital
+        }
+    })
 }
 
-const fetchCountry = async (countryName: string): Promise<Country> => {
-    const response = await fetch(`${baseUrl}${version}name/${countryName}?fullText=true`)
+const fetchItemData = async (countryName: string): Promise<Country> => {
+    const response = await fetch(`${BASE_URL}${API_VERSION}name/${countryName}?fullText=true`)
     const data = await response.json()
-
-    console.log(data)
 
     if (!response.ok)
         console.error("Error")
@@ -44,36 +36,32 @@ const fetchCountry = async (countryName: string): Promise<Country> => {
     return data[0]
 }
 
-export const transformCountryData = async (countryName: string): Promise<Country> => {
-    const data = await fetchCountry(countryName)
+export const extractItemData = async (countryName: string): Promise<Country> => {
+    const data = await fetchItemData(countryName)
     console.log(data)
+    const { flags: { png, alt }, name: { common, nativeName }, population, region, subregion, capital, tld, currencies, languages, borders, } = data
 
     return {
-        flags: {
-            png: data.flags.png,
-            alt: data.flags.alt
-        },
-        name: {
-            common: data.name.common,
-            nativeName: data.name.nativeName
-        },
-        population: data.population,
-        region: data.region,
-        subregion: data.subregion,
-        capital: data.capital,
-        tld: data.tld,
-        currencies: data.currencies,
-        languages: data.languages,
-        borders: data.borders ? await Promise.all(data.borders.map(async (border) => {
-            const name = await fetchCountryName(border)
+        flags: { png, alt },
+        name: { common, nativeName },
+        population,
+        region,
+        subregion,
+        capital,
+        tld,
+        currencies,
+        languages,
+        borders: borders ? await Promise.all(borders.map(async (border) => {
+            const name = await fetchName(border)
             return name
         })) : undefined
     }
 }
 
-export const fetchCountryName = async (countryCode: string): Promise<string> => {
-    const response = await fetch(`${baseUrl}${version}alpha/${countryCode}`)
+export const fetchName = async (countryCode: string): Promise<string> => {
+    const response = await fetch(`${BASE_URL}${API_VERSION}alpha/${countryCode}`)
     const data = await response.json()
+    console.log(data)
 
     if (!response.ok)
         console.error("Error")

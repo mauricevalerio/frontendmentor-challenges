@@ -1,7 +1,7 @@
 import FormSearch from '../components/FormSearch'
 import FormDropdown from '../components/FormDropdown'
 import CountryCard from '../components/CountryCard'
-import { transformAllCountriesData } from '../utils/fetch'
+import { extractSummaryData } from '../utils/fetch'
 import { filterChecker } from '../utils/filterChecker'
 import { useLoaderData, defer, Await } from 'react-router-dom'
 import { Suspense, useContext, useState } from 'react'
@@ -11,7 +11,7 @@ import { motion } from "framer-motion"
 import { ThemeContext } from '../context/Context'
 
 export const loader = async () => {
-    const countries = await transformAllCountriesData()
+    const countries = await extractSummaryData()
     return defer({ countries })
 }
 

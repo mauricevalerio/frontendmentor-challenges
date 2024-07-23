@@ -1,12 +1,12 @@
 import { Country } from '../interfaces/ICountry'
-import { transformCountryData } from '../utils/fetch'
+import { extractItemData } from '../utils/fetch'
 import { useLoaderData, Link, useNavigate } from 'react-router-dom'
 import { ThemeContext } from '../context/Context'
 import { useContext } from 'react'
 import { motion } from 'framer-motion'
 
 export const loader = async (countryName: string): Promise<Country> => {
-    return transformCountryData(countryName)
+    return extractItemData(countryName)
 }
 
 const CountryDetails: React.FC = () => {
