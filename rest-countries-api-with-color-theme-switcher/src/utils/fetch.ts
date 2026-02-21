@@ -2,12 +2,12 @@ import { Country, AllCountry } from '../interfaces/ICountry'
 import { BASE_URL, API_VERSION, ENDPOINT } from '../constants/index'
 
 const fetchAllData = async (): Promise<AllCountry[]> => {
-    const response = await fetch(`${BASE_URL}${API_VERSION}${ENDPOINT}`)
+    const response = await fetch(`${BASE_URL}${API_VERSION}${ENDPOINT}?fields=name,flags,population,region,capital`)
     const data = await response.json()
 
     if (!response.ok)
         console.error("Error")
-
+    console.log(data)
     return data
 }
 
